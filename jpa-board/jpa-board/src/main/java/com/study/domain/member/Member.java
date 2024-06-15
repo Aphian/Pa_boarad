@@ -6,12 +6,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.LocalDate;
 
 @Getter
@@ -23,25 +23,25 @@ public class Member extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;             // 회원 번호 (PK)
+    private Long id;             
 
     @Column(name = "login_id")
-    private String loginId;      // 로그인 ID
+    private String loginId;      
 
     @Column(name = "password")
-    private String password;     // 비밀번호
+    private String password;     
 
     @Column(name = "name")
-    private String name;         // 이름
+    private String name;         
 
     @Column(name = "gender")
-    private Gender gender;       // 성별
+    private Gender gender;       
 
     @Column(name = "birthday")
-    private LocalDate birthday;  // 생년월일
+    private LocalDate birthday;  
 
     @Column(name = "delete_yn")
-    private Boolean deleteYn;    // 삭제 여부
+    private Boolean deleteYn;    
 
     @Builder
     public Member(String loginId, String password, String name, Gender gender, LocalDate birthday, Boolean deleteYn) {
