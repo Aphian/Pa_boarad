@@ -13,10 +13,10 @@ import java.time.LocalDateTime;
 public abstract class BaseTimeEntity {
 
     @Column(name = "created_date")
-    private LocalDateTime createdDate;   // �깮�꽦�씪�떆
+    private LocalDateTime createdDate;   
 
     @Column(name = "modified_date")
-    private LocalDateTime modifiedDate;  // 理쒖쥌 �닔�젙�씪�떆
+    private LocalDateTime modifiedDate;  
 
     @PrePersist
     public void prePersist() {

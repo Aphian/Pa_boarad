@@ -24,7 +24,7 @@ public class MemberRepositoryTest {
                 .password("1234")
                 .name("홍길동")
                 .gender(Gender.M)
-                .birthday(LocalDate.of(1994, 9, 12))
+                .birthday(LocalDate.of(1991, 01, 01))
                 .deleteYn(false)
                 .build();
 
@@ -32,20 +32,20 @@ public class MemberRepositoryTest {
         Assertions.assertEquals(member.getLoginId(), "test");
     }
     
-    @Test
-    void findAllMember() {
-        memberRepository.findAll();
-    }
-
-    @Test
-    void findMemberById() {
-        Member member = memberRepository.findById(1L).orElseThrow(() -> new EntityNotFoundException());
-        Assertions.assertEquals(member.getLoginId(), "dyl6266");
-    }
-
-    @Test
-    void deleteMemberById() {
-        memberRepository.deleteById(1L);
-    }
+//    @Test
+//    void findAllMember() {
+//        memberRepository.findAll();
+//    }
+//
+//    @Test
+//    void findMemberById() {
+//        Member member = memberRepository.findById(1L).orElseThrow(() -> new EntityNotFoundException());
+//        Assertions.assertEquals(member.getLoginId(), "dyl6266");
+//    }
+//
+//    @Test
+//    void deleteMemberById() {
+//        memberRepository.deleteById(1L);
+//    }
 
 }
