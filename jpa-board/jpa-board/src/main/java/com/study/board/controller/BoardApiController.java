@@ -47,7 +47,7 @@ public class BoardApiController {
 	}
 	
 	@PatchMapping("/boards/{id}")
-	public Long save(@PathVariable final Long id, @RequestBody final BoardRequestDto parans) {
+	public Long save(@PathVariable(value = "id", required = false) final Long id, @RequestBody final BoardRequestDto parans) {
 		return boardService.update(id, parans);
 	}
 	
