@@ -45,6 +45,7 @@ public class BoardApiController {
 		return boardService.findAll();
 	}
 	
+	// 게시글 수정
 	@PatchMapping("/boards/{id}")
 	public Long save(@PathVariable(value = "id", required = false) final Long id, @RequestBody final BoardRequestDto parans) {
 		return boardService.update(id, parans);
