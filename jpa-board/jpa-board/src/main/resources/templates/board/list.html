@@ -55,7 +55,7 @@
 			findAll();
 		}
 
-		 function findAll() {
+		function findAll() {
 
 			fetch('/api/boards').then(response => {
 				if (response.ok) {
@@ -84,6 +84,10 @@
 
 				document.getElementById('list').innerHTML = html;
 			});
+		}
+		
+		function goView(id) {
+			location.href = '/board/view/${id}';
 		}
 
 	/*]]>*/

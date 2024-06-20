@@ -81,8 +81,12 @@
 			deleteYn: 'N'
 		};
 		
+		const id = [[ ${id} ]];
+		const uri = (id) ? `/api/boards/${id}` : '/api/boards';
+		const method = (id) ? 'PATCH' : 'POST'; 
+		
 		fetch('/api/boards', {
-			method: 'post',
+			method: method,
 			headers: {
 				'Content-Type': 'application/json',
 			},
