@@ -61,6 +61,15 @@ public class BoardService {
 		
 	}
 	
+	// 게시글 삭제 여부
+	public List<BoardResponseDto> findAllByDeleteYn(final char deleteYn) {
+		
+		Sort sort = Sort.by(Direction.DESC, "id", "createdDate");
+		List<Board> list = boardRespository.findAllByDeleteYn(deleteYn, sort);
+		return list.stream().map(BoardResponseDto :: new).collect(Collectors.toList());
+		
+	}
+	
 	// 게시글 상세정보
 	@Transactional
 	public BoardResponseDto findById(final Long id) {
