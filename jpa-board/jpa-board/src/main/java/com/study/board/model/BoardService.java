@@ -45,10 +45,31 @@ public class BoardService {
 	@Transactional
 	public Long update(final Long id, final BoardRequestDto params) {
 		
-		Board entity = boardRespository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.POST_NOT_FOUND));
+		Board entity = boardRespository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
         entity.update(params.getTitle(), params.getContent(), params.getWriter());
         return id;
 		
 	}
+	
+	// 게시글 삭제
+	@Transactional
+	public Long delete(final Long id) {
+		
+		Board entity = boardRespository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
+		entity.delete();
+		return id;
+		
+	}
+	
+	// 게시글 상세정보
+	@Transactional
+	public BoardResponseDto findById(final Long id) {
+		
+		Board entity = boardRespository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
+		entity.increaseHits();
+		return new BoardResponseDto(entity);
+		
+	}
+	
 
 }

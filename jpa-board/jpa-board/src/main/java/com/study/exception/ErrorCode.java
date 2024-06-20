@@ -13,7 +13,7 @@ public enum ErrorCode {
 	
 	BAD_REQUEST(HttpStatus.BAD_REQUEST, "잘못된 요청"),
 	
-	POST_NOT_FOUND(HttpStatus.NOT_FOUND, "게시글 정보를 찾을 수 없습니다."),
+	POSTS_NOT_FOUND(HttpStatus.NOT_FOUND, "게시글 정보를 찾을 수 없습니다."),
 	
 	METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED, "허용되지 않은 메서드입니다"), 
 	
