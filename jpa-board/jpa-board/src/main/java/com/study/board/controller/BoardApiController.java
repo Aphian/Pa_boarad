@@ -2,6 +2,7 @@ package com.study.board.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,6 +50,18 @@ public class BoardApiController {
 	@PatchMapping("/boards/{id}")
 	public Long save(@PathVariable(value = "id", required = false) final Long id, @RequestBody final BoardRequestDto parans) {
 		return boardService.update(id, parans);
+	}
+	
+	// 게시글 삭제
+	@DeleteMapping("/boards/{id}") 
+	public Long delete(@PathVariable(value = "id", required = false) final Long id) {
+		return boardService.delete(id);
+	}
+	
+	// 게시글 상세정보
+	@GetMapping("/boards/{id}")
+	public BoardResponseDto findById(@PathVariable(value = "id", required = false) final Long id) {
+		return boardService.findById(id);
 	}
 	
 	
