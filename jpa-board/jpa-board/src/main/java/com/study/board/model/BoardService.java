@@ -1,6 +1,9 @@
 package com.study.board.model;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Sort;
@@ -14,6 +17,8 @@ import com.study.board.entity.Board;
 import com.study.board.entity.BoardRespository;
 import com.study.exception.CustomException;
 import com.study.exception.ErrorCode;
+import com.study.paging.CommonParams;
+import com.study.paging.Pagination;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,6 +27,8 @@ import lombok.RequiredArgsConstructor;
 public class BoardService {
 	
 	private final BoardRespository boardRespository;
+	
+	private final BoardMapper boardMapper;
 	
 	// 게시글 생성
 	@Transactional
@@ -77,6 +84,32 @@ public class BoardService {
 		Board entity = boardRespository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
 		entity.increaseHits();
 		return new BoardResponseDto(entity);
+		
+	}
+	
+	// 게시글 리스트 조회 (pagination)
+	public Map<String, Object> findAll(CommonParams params) {
+		
+		// 게시글 수 조회
+		int count = boardMapper.count(params);
+		
+		// 게시글이 없을 경우 종료
+		if (count < 1) {
+			return Collections.emptyMap();
+		}
+		
+		// pagination 정보
+		Pagination pagination = new Pagination(count, params);
+		params.setPagination(pagination);
+		
+		// 게시글 목록 조회
+		List<BoardResponseDto> list = boardMapper.findAll(params);
+		
+		// 데이터 반환
+		Map<String, Object> response = new HashMap<>();
+		response.put("params", params);
+		response.put("list", list);
+		return response;
 		
 	}
 	
