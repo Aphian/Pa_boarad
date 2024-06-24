@@ -4,7 +4,7 @@
     <th:block layout:fragment="content">
     <!--/* 검색 영역 */-->
     <div class="input-group" id="adv-search">
-		<form id="searchform" onsubmit="return false;">
+		<form id="searchForm" onsubmit="return false;">
 	        <select id="searchType" class="form-control" style="width: 100px;">
 	            <option value="">전체</option>
 	            <option value="title">제목</option>
@@ -122,7 +122,7 @@
 		// 게시글 리스트 조회
 		function findAll(page) {
 			
-			const form = document.getElementById('searchform');
+			const form = document.getElementById('searchForm');
 			const params = {
 				page: page,
 				recordPerpage: 10,
