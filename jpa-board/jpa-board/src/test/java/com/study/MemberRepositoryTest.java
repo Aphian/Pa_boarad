@@ -20,7 +20,7 @@ public class MemberRepositoryTest {
     @Test
     void saveMember() {
         Member saveParams = Member.builder()
-                .loginId("test")
+                .loginId("tester_1")
                 .password("1234")
                 .name("홍길동")
                 .gender(Gender.M)
@@ -29,7 +29,7 @@ public class MemberRepositoryTest {
                 .build();
 
         Member member = memberRepository.save(saveParams);
-        Assertions.assertEquals(member.getLoginId(), "test");
+        Assertions.assertEquals(member.getLoginId(), "tester_1");
     }
     
 //    @Test
