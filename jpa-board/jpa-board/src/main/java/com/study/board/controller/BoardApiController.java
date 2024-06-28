@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.study.board.dto.BoardRequestDto;
@@ -57,8 +56,8 @@ public class BoardApiController {
 	
 	// 게시글 수정
 	@PatchMapping("/boards/{id}")
-	public Long save(@PathVariable(value = "id", required = false) final Long id, @RequestBody final BoardRequestDto parans) {
-		return boardService.update(id, parans);
+	public Long save(@PathVariable(value = "id", required = false) final Long id, @RequestBody final BoardRequestDto params) {
+		return boardService.update(id, params);
 	}
 	
 	// 게시글 삭제

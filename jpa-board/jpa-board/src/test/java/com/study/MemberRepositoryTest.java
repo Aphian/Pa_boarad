@@ -17,20 +17,20 @@ public class MemberRepositoryTest {
     @Autowired
     MemberRepository memberRepository;
 
-//    @Test
-//    void saveMember() {
-//        Member saveParams = Member.builder()
-//                .loginId("test")
-//                .password("1234")
-//                .name("홍길동")
-//                .gender(Gender.M)
-//                .birthday(LocalDate.of(1991, 01, 01))
-//                .deleteYn(false)
-//                .build();
-//
-//        Member member = memberRepository.save(saveParams);
-//        Assertions.assertEquals(member.getLoginId(), "test");
-//    }
+    @Test
+    void saveMember() {
+        Member saveParams = Member.builder()
+                .loginId("test")
+                .password("1234")
+                .name("홍길동")
+                .gender(Gender.M)
+                .birthday(LocalDate.of(1991, 01, 01))
+                .deleteYn(false)
+                .build();
+
+        Member member = memberRepository.save(saveParams);
+        Assertions.assertEquals(member.getLoginId(), "test");
+    }
     
 //    @Test
 //    void findAllMember() {
@@ -43,9 +43,9 @@ public class MemberRepositoryTest {
 //        Assertions.assertEquals(member.getLoginId(), "test");
 //    }
 //
-    @Test
-    void deleteMemberById() {
-        memberRepository.deleteById(1L);
-    }
+//    @Test
+//    void deleteMemberById() {
+//        memberRepository.deleteById(1L);
+//    }
 
 }
