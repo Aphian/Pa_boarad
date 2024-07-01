@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<th:block th:fragment="configFragment">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap demo</title>
+
+        <!-- °øÅë css -->
+        <th:block th:replace="common/styles"></th:block>
+
+        <!-- ÄÁÅÙÃ÷ ÆäÀÌÁöÀÇ css -->
+        <th:block layout:fragment="css"></th:block>
+
+        <!-- °øÅë js -->
+        <th:block th:replace="common/scripts"></th:block>
+
+        <!-- ÄÁÅÙÃ÷ ÆäÀÌÁöÀÇ js -->
+        <th:block layout:fragment="script"></th:block>
+    </head>
+</th:block>
+</html>
