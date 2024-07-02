@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- config -->
 	<th:block th:replace="~{fragment/config :: configFragment}"></th:block>
 	<!-- header -->
@@ -13,7 +13,6 @@
 		        <th:block layout:fragment="content"></th:block>
 		    </div>
 		</div>
-
 		<!-- footer -->
 		<th:block th:replace="~{fragment/footer :: footerFragment}"></th:block>
 	</body>
