@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class Member {
+public class Member2 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,7 @@ public class Member {
     private List<Board> boards = new ArrayList<>();
 
     @Builder
-    public Member(String username, String phoneNo, int age, Authority authority){
+    public Member2(String username, String phoneNo, int age, Authority authority){
         this.username = username;
         this.phoneNo = phoneNo;
         this.age = age;

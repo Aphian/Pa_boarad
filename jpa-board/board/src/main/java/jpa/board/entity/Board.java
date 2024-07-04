@@ -38,7 +38,7 @@ public class Board {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_id")
-	private Member member;
+	private Member2 member;
 	
 	public Board update(String title, String content) {
 		this.title = title;
@@ -52,7 +52,7 @@ public class Board {
 	}
 	
 	@Builder
-	public Board(String title, String content, Member member) {
+	public Board(String title, String content, Member2 member) {
 		this.title = title;
 		this.content = content;
 		this.viewCount = 0L;

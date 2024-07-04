@@ -1,6 +1,6 @@
 package jpa.board;
 
-import jpa.board.entity.Member;
+import jpa.board.entity.Member2;
 //import jpa.board.repository.BoardRepository;
 import jpa.board.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,9 +31,9 @@ public class InitDB {
 //        private final BoardRepository boardRepository;
         public void userDBInit(){
 
-            List<Member> memberList = memberRepository.findAll();
+            List<Member2> memberList = memberRepository.findAll();
             if(memberList.size() == 0){
-                Member member = Member.builder()
+                Member2 member = Member2.builder()
                         .username("관리자")
                         .phoneNo("010-1111-2222")
                         .age(29)
