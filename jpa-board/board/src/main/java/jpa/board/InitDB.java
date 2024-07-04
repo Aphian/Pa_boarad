@@ -2,7 +2,7 @@ package jpa.board;
 
 import jpa.board.entity.Member2;
 //import jpa.board.repository.BoardRepository;
-import jpa.board.repository.MemberRepository;
+import jpa.board.repository.Member2Repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import jakarta.annotation.PostConstruct;
@@ -27,7 +27,7 @@ public class InitDB {
     @RequiredArgsConstructor
     static class InitService {
 
-        private final MemberRepository memberRepository;
+        private final Member2Repository memberRepository;
 //        private final BoardRepository boardRepository;
         public void userDBInit(){
 
