@@ -39,10 +39,8 @@ public class BoardRepositoryTest {
 //        Board board = boardDto.toEntity(member);
 //        boardRepository.save(board);
 
-        //when
         List<Board> boardList = boardRepository.findAll();
 
-        //then
         Board boards = boardList.get(0);
         assertThat(boards.getTitle()).isEqualTo(title);
         assertThat(boards.getContent()).isEqualTo(content);

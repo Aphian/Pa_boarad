@@ -1,7 +1,7 @@
 package jpa.board;
 
 import jpa.board.entity.Member2;
-//import jpa.board.repository.BoardRepository;
+import jpa.board.repository.BoardRepository;
 import jpa.board.repository.Member2Repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -28,7 +28,7 @@ public class InitDB {
     static class InitService {
 
         private final Member2Repository memberRepository;
-//        private final BoardRepository boardRepository;
+        private final BoardRepository boardRepository;
         public void userDBInit(){
 
             List<Member2> memberList = memberRepository.findAll();
