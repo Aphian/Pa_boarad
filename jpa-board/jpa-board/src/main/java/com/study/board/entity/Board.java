@@ -39,7 +39,7 @@ public class Board {
 		this.deleteYn = deleteYn;
 	}
 	
-	// °Ô½Ã±Û ¼öÁ¤
+	// ê²Œì‹œê¸€ ìˆ˜ì •
 	public void update(String title, String content, String writer) {
 		this.title = title;
 		this.content = content;
@@ -47,12 +47,12 @@ public class Board {
 		this.modifiedDate = LocalDateTime.now();
 	}
 	
-	// Á¶È¸ ¼ö
+	// ì¡°íšŒìˆ˜
 	public void increaseHits() {
 		this.hits++;
 	}
 	
-	// °Ô½Ã±Û »èÁ¦
+	// ì‚­ì œ ìœ ë¬´
 	public void delete() {
 		this.deleteYn = 'Y';
 	}
