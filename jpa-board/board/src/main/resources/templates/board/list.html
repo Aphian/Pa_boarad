@@ -23,7 +23,7 @@
                         <tr>
                             <th>
                                 <label class="checkbox-inline">
-                                <input type="checkbox" id="allCheckBox" class="chk">
+                                <input type="checkbox" id="allCheckBox" onclick="allChecked()">
                                 </label>
                             </th>
                             <th>번호</th>
@@ -38,7 +38,7 @@
                         <tr th:each="list, index : ${list}">
                             <td>
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" class="chk" name="cchk" value="">
+                                    <input type="checkbox" name="chk" class="chk"onclick="chkClicked()" value="">
                                 </label>
                             <td th:text="${totalCount - (size * number) - index.index}"></td>
                             <td><a th:text="${list.title}" href=""></a></td>
@@ -93,3 +93,57 @@
         </form>
     </div>
 </html>
+
+<script>
+	// check box script    
+    function allChecked(target){
+    
+        const checkbox = document.getElementById('allCheckBox');
+
+        const is_checked = checkbox.checked;
+
+        if(is_checked){
+    
+            chkAllChecked()
+        }
+
+        else{
+    
+            chkAllUnChecked()
+        }
+    }
+
+    
+    function chkClicked(){
+        const allCount = document.querySelectorAll(".chk").length;
+
+        const query = 'input[name="chk"]:checked'
+        const selectedElements = document.querySelectorAll(query)
+        const selectedElementsCnt = selectedElements.length;
+
+    
+        if(allCount == selectedElementsCnt){
+             document.getElementById('allCheckBox').checked = true;
+        }
+
+    
+        else{
+            document.getElementById('allCheckBox').checked = false;
+        }
+    }
+
+    
+    function chkAllChecked(){
+        document.querySelectorAll(".chk").forEach(function(v, i) {
+            v.checked = true;
+        });
+    }
+
+    
+    function chkAllUnChecked(){
+        document.querySelectorAll(".chk").forEach(function(v, i) {
+            v.checked = false;
+        });
+    }
+
+</script>
