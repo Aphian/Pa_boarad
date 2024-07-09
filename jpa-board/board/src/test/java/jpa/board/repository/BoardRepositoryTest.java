@@ -28,7 +28,7 @@ public class BoardRepositoryTest {
 	public void post_save() {
 		
 		boardRepository.deleteAll();
-		
+		 
 		String title = "제목";
 		String content = "내용";
 		
