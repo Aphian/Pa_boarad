@@ -1,5 +1,6 @@
 package jpa.board.repositoryImpl;
 
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import jpa.board.dto.BoardReponseDto;
@@ -14,23 +15,23 @@ import java.util.List;
 //import static jpa.board.entity.QBboard.board;
 //import static jpa.board.entity.QMember.member;
 
-//@Repository
-//public class BoardRepositoryImpl implements CustomBoardRepository{
-//	
-//	private final JPAQueryFactory jpaQueryFactory;
-//	
-//	public BoardRepositoryImpl(JPAQueryFactory jpaQueryFactory) {
-//		this.jpaQueryFactory = jpaQueryFactory;
-//	}
+@Repository
+public class BoardRepositoryImpl implements CustomBoardRepository{
 	
-//	@Override
-//	public Page<BoardReponseDto> seleteBoardList(String searchVal, Pageable pageable) {
-//		
+	private final JPAQueryFactory jpaQueryFactory;
+	
+	public BoardRepositoryImpl(JPAQueryFactory jpaQueryFactory) {
+		this.jpaQueryFactory = jpaQueryFactory;
+	}
+	
+	@Override
+	public Page<BoardReponseDto> seleteBoardList(String searchVal, Pageable pageable) {
+		
 //		List<BoardReponseDto> content = getBoardMemberDtos(searchVal, pageable);
 //		Long count = getCount(searchVal);
 //		return new PageImpl<>(content, pageable, count);
 //		
-//	}
+	}
 	
 //    private Long getCount(String searchVal){
 //        Long count = jpaQueryFactory
@@ -60,4 +61,12 @@ import java.util.List;
 //        return content;
 //    }
 	
-//}
+	private BooleanExpression containsSearch(String searchVal) {
+		
+		return searchVal != null ? board.title.contains(searchVal) : null;
+		
+	}
+
+
+	
+}
