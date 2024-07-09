@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
+import javax.persistence.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 

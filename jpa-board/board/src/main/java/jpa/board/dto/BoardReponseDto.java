@@ -2,6 +2,8 @@ package jpa.board.dto;
 
 import java.time.LocalDateTime;
 
+import com.querydsl.core.annotations.QueryProjection;
+
 import jpa.board.entity.Board;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +22,7 @@ public class BoardReponseDto {
 	private String delYn;
 	private String username;
 	
+	
 	public BoardReponseDto(Board board) {
 		this.id = board.getId();
 		this.title = board.getTitle();
@@ -30,5 +33,16 @@ public class BoardReponseDto {
 		this.delYn = board.getDelYn();
 		this.username = board.getMember().getUsername();
 	}
+	
+	@QueryProjection
+    public BoardReponseDto(Long id, String title, String content, LocalDateTime regDate , LocalDateTime uptDate, Long viewCount, String username){
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.regDate = regDate;
+        this.uptDate = uptDate;
+        this.viewCount = viewCount;
+        this.username = username;
+    }
 
 }

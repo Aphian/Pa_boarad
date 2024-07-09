@@ -4,6 +4,7 @@ package jpa.board.controller;
 import jpa.board.dto.BoardReponseDto;
 import jpa.board.dto.BoardRequestDto;
 import jpa.board.repository.CustomBoardRepository;
+import jpa.board.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,7 +24,8 @@ import org.springframework.ui.Model;
 @RequiredArgsConstructor
 public class BoardController {
 	
-	private final CustomBoardRepository customBoardRepository; 
+	private final CustomBoardRepository customBoardRepository;
+	private final BoardService boardService;
 	
 	public String list(String searchVal, Pageable pageable, Model model) {
 		Page<BoardReponseDto> results = customBoardRepository.seleteBoardList(searchVal, pageable);
