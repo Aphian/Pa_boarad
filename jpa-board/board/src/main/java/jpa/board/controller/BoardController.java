@@ -9,6 +9,11 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.ui.Model;
@@ -54,5 +59,15 @@ public class BoardController {
 		return "board/update";
 	}
 	
+	@PostMapping("/delete")
+	public String delete(@RequestParam List<String> boardIds) {
+		
+		for (int i = 0; i < boardIds.size(); i++) {
+			Long id = Long.valueOf(boardIds.get(i));
+			boardService.deleteBoard(id);
+		}
+		
+		return "redirect:/";
+	}
 
 }
