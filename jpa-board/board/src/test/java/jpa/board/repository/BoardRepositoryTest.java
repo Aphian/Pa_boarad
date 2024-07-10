@@ -1,6 +1,6 @@
 package jpa.board.repository;
 
-import jpa.board.dto.BoardRequestDto;
+import jpa.board.dto.BoardDto;
 import jpa.board.entity.Board;
 import jpa.board.entity.Member2;
 import org.junit.jupiter.api.Test;
@@ -35,7 +35,7 @@ public class BoardRepositoryTest {
 		List<Member2> memberList = member2Repository.findAll();
 		Member2 member = memberList.get(0);
 		
-		BoardRequestDto boardRequestDto = new BoardRequestDto(title, content);
+		BoardDto boardRequestDto = new BoardDto(title, content);
         Board board = boardRequestDto.toEntity(member);
         boardRepository.save(board);
 

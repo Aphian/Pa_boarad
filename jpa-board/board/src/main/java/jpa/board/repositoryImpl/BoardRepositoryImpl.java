@@ -3,9 +3,8 @@ package jpa.board.repositoryImpl;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
-import jpa.board.dto.BoardReponseDto;
-import jpa.board.dto.BoardRequestDto;
-import jpa.board.dto.QBoardReponseDto;
+import jpa.board.dto.BoardDto;
+import jpa.board.dto.QBoardDto;
 import jpa.board.repository.CustomBoardRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -26,9 +25,9 @@ public class BoardRepositoryImpl implements CustomBoardRepository{
 	}
 	
 	@Override
-	public Page<BoardReponseDto> seleteBoardList(String searchVal, Pageable pageable) {
+	public Page<BoardDto> seleteBoardList(String searchVal, Pageable pageable) {
 		
-		List<BoardReponseDto> content = getBoardMemberDtos(searchVal, pageable);
+		List<BoardDto> content = getBoardMemberDtos(searchVal, pageable);
 		Long count = getCount(searchVal);
 		return new PageImpl<>(content, pageable, count);
 		
@@ -43,9 +42,9 @@ public class BoardRepositoryImpl implements CustomBoardRepository{
         return count;
     }
     
-    private List<BoardReponseDto> getBoardMemberDtos(String searchVal, Pageable pageable){
-        List<BoardReponseDto> content = jpaQueryFactory
-                .select(new QBoardReponseDto(
+    private List<BoardDto> getBoardMemberDtos(String searchVal, Pageable pageable){
+        List<BoardDto> content = jpaQueryFactory
+                .select(new QBoardDto(
                          board.id
                         ,board.title
                         ,board.content

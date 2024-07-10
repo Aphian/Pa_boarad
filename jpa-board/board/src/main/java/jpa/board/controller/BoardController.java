@@ -1,8 +1,7 @@
 package jpa.board.controller;
 
 
-import jpa.board.dto.BoardReponseDto;
-import jpa.board.dto.BoardRequestDto;
+import jpa.board.dto.BoardDto;
 import jpa.board.repository.CustomBoardRepository;
 import jpa.board.service.BoardService;
 
@@ -25,10 +24,10 @@ import org.springframework.ui.Model;
 public class BoardController {
 	
 	private final CustomBoardRepository customBoardRepository;
-	private final BoardService boardService;
+//	private final BoardService boardService;
 	
 	public String list(String searchVal, Pageable pageable, Model model) {
-		Page<BoardReponseDto> results = customBoardRepository.seleteBoardList(searchVal, pageable);
+		Page<BoardDto> results = customBoardRepository.seleteBoardList(searchVal, pageable);
 		model.addAttribute("list", results);
 		model.addAttribute("maxPage", 5);
 		model.addAttribute("searchVal", searchVal);
@@ -39,7 +38,7 @@ public class BoardController {
 		
 	}
 	
-	private void pageModelPut(Page<BoardReponseDto> results, Model model) {
+	private void pageModelPut(Page<BoardDto> results, Model model) {
 		model.addAttribute("totalCount", results.getTotalElements());
 		model.addAttribute("size", results.getPageable().getPageSize());
 		model.addAttribute("number", results.getPageable().getPageNumber());
@@ -61,15 +60,15 @@ public class BoardController {
 		return "board/update";
 	}
 	
-	@PostMapping("/delete")
-	public String delete(@RequestParam List<String> boardIds) {
-		
-		for (int i = 0; i < boardIds.size(); i++) {
-			Long id = Long.valueOf(boardIds.get(i));
-			boardService.deleteBoard(id);
-		}
-		
-		return "redirect:/";
-	}
+//	@PostMapping("/delete")
+//	public String delete(@RequestParam List<String> boardIds) {
+//		
+//		for (int i = 0; i < boardIds.size(); i++) {
+//			Long id = Long.valueOf(boardIds.get(i));
+//			boardService.deleteBoard(id);
+//		}
+//		
+//		return "redirect:/";
+//	}
 
 }
