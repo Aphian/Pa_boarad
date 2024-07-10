@@ -40,6 +40,7 @@ public class BoardRepositoryImpl implements CustomBoardRepository{
                 //.leftJoin(board.member, member)   //검색조건 최적화
                 .fetchOne();
         return count;
+        
     }
     
     private List<BoardDto> getBoardMemberDtos(String searchVal, Pageable pageable){
