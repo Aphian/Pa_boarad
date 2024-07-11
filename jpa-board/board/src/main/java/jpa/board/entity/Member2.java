@@ -27,7 +27,7 @@ public class Member2 {
     @Enumerated(EnumType.STRING)
     private Authority authority; 
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member2")
     private List<Board> boards = new ArrayList<>();
 
     @Builder

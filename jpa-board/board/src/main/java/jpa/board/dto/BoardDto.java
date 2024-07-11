@@ -45,11 +45,11 @@ public class BoardDto {
         this.username = username;
     }
 	
-	public Board toEntity(Member2 member) {
+	public Board toEntity(Member2 member2) {
 		return Board.builder()
 				.title(title)
 				.content(content)
-				.member(member)
+				.member2(member2)
 				.build();
 	}
 

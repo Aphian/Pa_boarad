@@ -4,18 +4,14 @@ import jpa.board.dto.BoardDto;
 import jpa.board.entity.Board;
 import jpa.board.entity.Member2;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class BoardRepositoryTest {
 	
@@ -30,8 +26,8 @@ public class BoardRepositoryTest {
 		
 		boardRepository.deleteAll();
 		 
-		String title = "제목";
-		String content = "내용";
+		String title = "제목1";
+		String content = "내용1";
 		
 		List<Member2> memberList = member2Repository.findAll();
 		Member2 member = memberList.get(0);
@@ -65,22 +61,6 @@ public class BoardRepositoryTest {
         assertThat(boards2.getTitle()).isEqualTo(title);
         assertThat(boards2.getContent()).isEqualTo(content);
 	}
-	
-	@Test
-	@Transactional
-    public void posts_save() {
-		
-		Member2 member2 = member2Repository.findByUsername("관리자").orElseThrow(() -> new IllegalAccessError("User not found"));
-		
-        for (int i = 1; i <= 200; i++) {
-            Board board = Board.builder()
-                    .title("제목" + i)
-                    .content("내용" + i)
-                    .member2(member2)
-                    .build();
-            boardRepository.save(board);
-        }
-    }
 
 
 	@Test
