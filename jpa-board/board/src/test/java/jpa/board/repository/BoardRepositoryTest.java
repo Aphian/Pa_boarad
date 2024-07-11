@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -64,6 +65,22 @@ public class BoardRepositoryTest {
         assertThat(boards2.getTitle()).isEqualTo(title);
         assertThat(boards2.getContent()).isEqualTo(content);
 	}
+	
+	@Test
+	@Transactional
+    public void posts_save() {
+		
+		Member2 member2 = member2Repository.findByUsername("관리자").orElseThrow(() -> new IllegalAccessError("User not found"));
+		
+        for (int i = 1; i <= 200; i++) {
+            Board board = Board.builder()
+                    .title("제목" + i)
+                    .content("내용" + i)
+                    .member2(member2)
+                    .build();
+            boardRepository.save(board);
+        }
+    }
 
 
 	@Test
