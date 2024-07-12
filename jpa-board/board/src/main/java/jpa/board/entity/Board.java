@@ -10,6 +10,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import jakarta.persistence.*;
+import jpa.board.dto.BoardDto;
+
 //import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -52,9 +54,9 @@ public class Board {
 	}
 	
 	@Builder
-	public Board(String title, String content, Member2 member2) {
-		this.title = title;
-		this.content = content;
+	public Board(BoardDto boardDto, Member2 member2) {
+		this.title = boardDto.getTitle();
+		this.content = boardDto.getContent();
 		this.viewCount = 0L;
 		this.delYn = "N";
 		this.member2 = member2;
