@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @EntityListeners(AuditingEntityListener.class)
+
 public class Board {
 	
 	@Id
@@ -51,6 +52,15 @@ public class Board {
 	public Board delete(String delYn) {
 		this.delYn = delYn;
 		return this;
+	}
+	
+	@Builder
+	public Board(String title, String content, Member2 member2) {
+		this.title = title;
+		this.content = content;
+		this.viewCount = 0L;
+		this.delYn = "N";
+		this.member2 = member2;
 	}
 	
 	@Builder

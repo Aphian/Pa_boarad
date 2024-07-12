@@ -68,17 +68,12 @@ public class BoardRepositoryTest {
 		Member2 member2 = member2Repository.findByUsername("관리자").orElseThrow(() -> new IllegalArgumentException("User not found"));
 		
 	    for (int i = 1; i <= 200; i++) {
-	        Board board = Board.builder()
-	                .title("제목" + i)
-	                .content("내용" + i)
-	                .member2(member2)
-	                .build();
+	    	BoardDto boardDto = new BoardDto("제목" + i, "내용" + i);
+	    	Board board = boardDto.toEntity(member2);
 	        boardRepository.save(board);
 	    }
 	}
 	
-
-
 	@Test
 	void test() {
 		fail("Not yet implemented");
