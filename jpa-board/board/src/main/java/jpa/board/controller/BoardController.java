@@ -24,7 +24,7 @@ import org.springframework.ui.Model;
 public class BoardController {
 	
 	private final CustomBoardRepository customBoardRepository;
-//	private final BoardService boardService;
+	private final BoardService boardService;
 	
 	public String list(String searchVal, Pageable pageable, Model model) {
 		Page<BoardDto> results = customBoardRepository.seleteBoardList(searchVal, pageable);
@@ -51,24 +51,33 @@ public class BoardController {
 //	}
 	
 	@GetMapping("/write")
-	public String write() {
+	public String write(Model model) {
+		model.addAttribute("form", new BoardDto());
 		return "board/write";
 	}
+	
+	@PostMapping("/write")
+	public String save(BoardDto boardDto) {
+		boardService.saveBoard(boardDto);
+		return "redirect:/";
+	}
+	
+	
 	
 	@GetMapping("/update")
 	public String update() {
 		return "board/update";
 	}
 	
-//	@PostMapping("/delete")
-//	public String delete(@RequestParam List<String> boardIds) {
-//		
-//		for (int i = 0; i < boardIds.size(); i++) {
-//			Long id = Long.valueOf(boardIds.get(i));
-//			boardService.deleteBoard(id);
-//		}
-//		
-//		return "redirect:/";
-//	}
+	@PostMapping("/delete")
+	public String delete(@RequestParam List<String> boardIds) {
+		
+		for (int i = 0; i < boardIds.size(); i++) {
+			Long id = Long.valueOf(boardIds.get(i));
+			boardService.deleteBoard(id);
+		}
+		
+		return "redirect:/";
+	}
 
 }
