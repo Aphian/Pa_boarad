@@ -2,6 +2,7 @@ package jpa.board.controller;
 
 
 import jpa.board.dto.BoardDto;
+import jpa.board.entity.Board;
 import jpa.board.repository.CustomBoardRepository;
 import jpa.board.service.BoardService;
 
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -70,6 +72,18 @@ public class BoardController {
 		return "redirect:/";
 	}
 	
+	
+	@GetMapping("/updata/{boardId}")
+	public String detail(@PathVariable Long boardId, Model model) {
+		Board board = boardService.seletBoardDetail(boardId);
+		BoardDto boardDto = new BoardDto();
+		boardDto.setId(boardId);
+		boardDto.setTitle(board.getTitle());
+		boardDto.setContent(boardDto.getContent());
+		model.addAttribute("boardDto",boardDto);
+		
+		return "board/update";
+	}
 	
 	
 	@GetMapping("/update")
