@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
@@ -75,7 +76,7 @@ public class BoardController {
 	
 	@GetMapping("/updata/{boardId}")
 	public String detail(@PathVariable Long boardId, Model model) {
-		Board board = boardService.seletBoardDetail(boardId);
+		Board board = boardService.selectBoardDetail(boardId);
 		BoardDto boardDto = new BoardDto();
 		boardDto.setId(boardId);
 		boardDto.setTitle(board.getTitle());
@@ -85,10 +86,15 @@ public class BoardController {
 		return "board/update";
 	}
 	
-	
-	@GetMapping("/update")
-	public String update() {
-		return "board/update";
+	@PutMapping("/update/{boardId}")
+	public String update(@Valid BoardDto boardDto, BindingResult result) {
+		
+		if(result.hasErrors()) {
+			return "board/update";
+		}
+		
+		boardService.saveBoard(boardDto);
+		return "redirect:/";
 	}
 	
 	@PostMapping("/delete")

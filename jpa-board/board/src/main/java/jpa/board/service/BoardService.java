@@ -20,6 +20,10 @@ public class BoardService {
 	private final BoardRepository boardRepository;
 	private final Member2Repository member2Repository;
 	
+	public Board selectBoardDetail(Long id) {
+		return boardRepository.findById(id).get();
+	}
+	
 	@Transactional
 	public Long saveBoard(BoardDto boardDto) {
 		List<Member2> memberList = member2Repository.findAll();
