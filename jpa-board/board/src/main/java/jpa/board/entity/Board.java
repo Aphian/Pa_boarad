@@ -71,5 +71,10 @@ public class Board {
 		this.delYn = "N";
 		this.member2 = member2;
 	}
+	
+	public Board updateViewCount(Long viewCount) {
+		this.viewCount = viewCount + 1;
+		return this;
+	}
 
 }

@@ -21,7 +21,10 @@ public class BoardService {
 	private final Member2Repository member2Repository;
 	
 	public Board selectBoardDetail(Long id) {
-		return boardRepository.findById(id).get();
+		Board board = boardRepository.findById(id).get();
+		board.updateViewCount(board.getViewCount());
+		
+		return board;
 	}
 	
 	@Transactional
