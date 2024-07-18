@@ -10,4 +10,8 @@ spring:
       ddl-auto: none 
     properties: 
       hibernate: 
-        format_sql: true 
+        format_sql: true
+  mvc:
+    hidden-method:
+      filter:
+        enabled: true
