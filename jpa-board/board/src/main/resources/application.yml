@@ -15,3 +15,7 @@ spring:
     hidden-method:
       filter:
         enabled: true
+  servlet:
+    muoltipart:
+      max-file-size: 10MB
+      max-request-sizd: 10MB
