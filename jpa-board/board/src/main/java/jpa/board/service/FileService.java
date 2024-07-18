@@ -2,7 +2,7 @@ package jpa.board.service;
 
 import jpa.board.dto.BoardDto;
 import jpa.board.dto.FileDto;
-import jpa.board.repository.FileRepsoitory;
+import jpa.board.repository.FileRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

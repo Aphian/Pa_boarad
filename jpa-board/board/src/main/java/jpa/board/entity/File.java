@@ -38,6 +38,9 @@ public class File {
 	@CreatedDate
 	private LocalDateTime regDate;
 	
+	@OneToOne(mappedBy = "file")
+	private BoardFile boardFile;
+	
 	@Builder
 	public File(Long id, String originFileName, String savedFileName, String uploadDir, String extenstion, Long size, String contentType) {
 		this.id = id;
