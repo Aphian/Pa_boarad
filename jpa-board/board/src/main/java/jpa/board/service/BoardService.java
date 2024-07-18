@@ -20,6 +20,8 @@ public class BoardService {
 	private final BoardRepository boardRepository;
 	private final Member2Repository member2Repository;
 	
+	private final FileService fileService;
+	
 	public Board selectBoardDetail(Long id) {
 		Board board = boardRepository.findById(id).get();
 		board.updateViewCount(board.getViewCount());

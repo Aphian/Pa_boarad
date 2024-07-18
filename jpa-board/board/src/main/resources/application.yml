@@ -15,6 +15,23 @@ spring:
     hidden-method:
       filter:
         enabled: true
+        
+  devtools:
+    livereload:
+      enabled: true
+    thymeleaf:
+      cache: false
+    restart:
+      enable: false
+
+  logging:
+    level:
+      org.hibernate.SQL: debug
+      
+  upload:
+    path: C:/study/file/ 
+
+  
   servlet:
     muoltipart:
       max-file-size: 10MB
