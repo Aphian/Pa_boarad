@@ -30,7 +30,7 @@ public class BoardService {
 	}
 	
 	@Transactional
-	public Long saveBoard(BoardDto boardDto) {
+	public Long saveBoard(BoardDto boardDto) throws Exception {
 		List<Member2> memberList = member2Repository.findAll();
 		Member2 member = memberList.get(0);
 		Board board = null;

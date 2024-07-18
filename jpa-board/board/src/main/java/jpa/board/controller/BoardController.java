@@ -63,7 +63,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("/write")
-	public String save(@Valid BoardDto boardDto, BindingResult result) {
+	public String save(@Valid BoardDto boardDto, BindingResult result) throws Exception {
 		
 		if (result.hasErrors()) {
 			return "board/write";
@@ -87,7 +87,7 @@ public class BoardController {
 	}
 	
 	@PutMapping("/update/{boardId}")
-	public String update(@Valid BoardDto boardDto, BindingResult result) {
+	public String update(@Valid BoardDto boardDto, BindingResult result) throws Exception {
 		
 		if(result.hasErrors()) {
 			return "board/update";

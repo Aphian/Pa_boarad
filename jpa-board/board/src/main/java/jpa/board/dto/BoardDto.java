@@ -1,6 +1,9 @@
 package jpa.board.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.querydsl.core.annotations.QueryProjection;
 
@@ -51,6 +54,12 @@ public class BoardDto {
 				.content(content)
 				.member2(member2)
 				.build();
+	}
+	
+	// 추후 수정
+	public List<MultipartFile> getMultipartFile() {
+		
+		return null;
 	}
 
 }
