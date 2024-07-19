@@ -32,6 +32,7 @@ public class BoardController {
 	private final CustomBoardRepository customBoardRepository;
 	private final BoardService boardService;
 	
+	@GetMapping("/")
 	public String list(String searchVal, Pageable pageable, Model model) {
 		Page<BoardDto> results = customBoardRepository.seleteBoardList(searchVal, pageable);
 		model.addAttribute("list", results);
