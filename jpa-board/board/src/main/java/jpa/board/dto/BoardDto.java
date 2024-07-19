@@ -9,6 +9,7 @@ import com.querydsl.core.annotations.QueryProjection;
 
 import jpa.board.entity.Board;
 import jpa.board.entity.Member2;
+import lombok.Builder;
 import lombok.Data;
 
 import jakarta.validation.constraints.NotEmpty;
@@ -28,11 +29,15 @@ public class BoardDto {
 	private Long viewCount;
 	private String username;
 	
+	private List<MultipartFile> multipartFile;
+	
 	public BoardDto() {
 		
 	}
 	
-	public BoardDto(String title, String content) {
+	@Builder
+	public BoardDto(Long id, String title, String content) {
+		this.id = id;
 		this.title = title;
 		this.content = content;
 	}
@@ -56,10 +61,4 @@ public class BoardDto {
 				.build();
 	}
 	
-	// 추후 수정
-	public List<MultipartFile> getMultipartFile() {
-		
-		return null;
-	}
-
 }
