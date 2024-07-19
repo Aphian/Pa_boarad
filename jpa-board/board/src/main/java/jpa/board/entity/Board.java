@@ -63,18 +63,9 @@ public class Board {
 		this.member2 = member2;
 	}
 	
-	@Builder
-	public Board(BoardDto boardDto, Member2 member2) {
-		this.title = boardDto.getTitle();
-		this.content = boardDto.getContent();
-		this.viewCount = 0L;
-		this.delYn = "N";
-		this.member2 = member2;
-	}
-	
 	public Board updateViewCount(Long viewCount) {
 		this.viewCount = viewCount + 1;
 		return this;
-	}
+	}	
 
 }
