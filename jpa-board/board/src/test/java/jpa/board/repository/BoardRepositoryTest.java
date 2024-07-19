@@ -25,14 +25,15 @@ public class BoardRepositoryTest {
 	public void post_save() {
 		
 		boardRepository.deleteAll();
-		 
+		
+		Long id = 1L;
 		String title = "제목1";
 		String content = "내용1";
 		
 		List<Member2> memberList = member2Repository.findAll();
 		Member2 member = memberList.get(0);
 		
-		BoardDto boardRequestDto = new BoardDto(title, content);
+		BoardDto boardRequestDto = new BoardDto(id, title, content);
         Board board = boardRequestDto.toEntity(member);
         boardRepository.save(board);
 
@@ -68,7 +69,8 @@ public class BoardRepositoryTest {
 		Member2 member2 = member2Repository.findByUsername("관리자").orElseThrow(() -> new IllegalArgumentException("User not found"));
 		
 	    for (int i = 1; i <= 200; i++) {
-	    	BoardDto boardDto = new BoardDto("제목" + i, "내용" + i);
+	    	long j = (long) i;
+	    	BoardDto boardDto = new BoardDto(j, "제목" + i, "내용" + i);
 	    	Board board = boardDto.toEntity(member2);
 	        boardRepository.save(board);
 	    }
