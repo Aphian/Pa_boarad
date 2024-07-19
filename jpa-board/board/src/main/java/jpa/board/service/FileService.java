@@ -2,6 +2,7 @@ package jpa.board.service;
 
 import jpa.board.dto.BoardDto;
 import jpa.board.dto.FileDto;
+import jpa.board.entity.BoardFile;
 import jpa.board.repository.FileRepository;
 
 import lombok.RequiredArgsConstructor;

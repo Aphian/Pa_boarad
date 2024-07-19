@@ -51,13 +51,16 @@ public class BoardService {
 	
 	@Transactional
 	public Board deleteBoard(Long id) {
-		
 		Board board = boardRepository.findById(id).get();
-		
 		board.delete("Y");
-		
 		return board;
-		
+	}
+	
+	@Transactional
+	public Board seletBoardDetail(Long id) {
+		Board board = boardRepository.findById(id).get();
+		board.updateViewCount(board.getViewCount());
+		return board;
 	}
 
 }
