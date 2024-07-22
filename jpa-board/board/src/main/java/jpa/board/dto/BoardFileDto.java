@@ -27,9 +27,6 @@ public class BoardFileDto {
     
     private String extension;
 
-    public BoardFileDto(){
-
-    }
 
     @Builder
     public BoardFileDto(Long boardId){
@@ -44,7 +41,6 @@ public class BoardFileDto {
     	this.size = size;
     	this.extension = extension;
     }
-    
     
     public BoardFile toEntity(File file){
         return BoardFile.builder()

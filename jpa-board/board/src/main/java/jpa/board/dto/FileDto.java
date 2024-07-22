@@ -20,10 +20,6 @@ public class FileDto {
 	private Long size;
 	private String contentType;
 	
-	private FileDto() {
-		
-	}
-	
 	@Builder
 	public FileDto(Long id, String originFileName, String savedFileName, String uploadDir, String extension, Long size, String contentType) {
 		this.id = id;
