@@ -6,7 +6,7 @@ import jpa.board.entity.Board;
 import jpa.board.repository.BoardRepository;
 import jpa.board.repository.CustomBoardRepository;
 import jpa.board.service.BoardService;
-
+import jpa.board.service.FileService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Controller;
@@ -34,7 +34,7 @@ public class BoardController {
 	private final CustomBoardRepository customBoardRepository;
 	private final BoardService boardService;
 	
-//	private final FileService fileService;
+	private final FileService fileService;
 	
 	@GetMapping("/")
 	public String list(@RequestParam(name = "searchVal", required = false) String searchVal, @PageableDefault(size = 10) Pageable pageable, Model model) {
@@ -75,7 +75,7 @@ public class BoardController {
 	
 	
 	@GetMapping("/updata/{boardId}")
-	public String detail(@PathVariable(value = "boardId", required = false) Long boardId, Model model) {
+	public String detail(@PathVariable(name = "boardId", required = false) Long boardId, Model model) {
 		Board board = boardService.selectBoardDetail(boardId);
 		BoardDto boardDto = new BoardDto();
 		boardDto.setId(boardId);
@@ -98,7 +98,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("/delete")
-	public String delete(@RequestParam(value = "boarIds", required = false) List<String> boardIds) {
+	public String delete(@RequestParam(name = "boarIds", required = false) List<String> boardIds) {
 		
 		for (int i = 0; i < boardIds.size(); i++) {
 			Long id = Long.valueOf(boardIds.get(i));
@@ -106,6 +106,15 @@ public class BoardController {
 		}
 		
 		return "redirect:/";
+	}
+	
+	@PostMapping("/boardFileDelete")
+	public String boardFileDelete(@RequestParam(name = "fileId", required = false) Long fileId, @RequestParam(name = "boardId", required = false) Long boardId) {
+		
+		fileService.deleteBoardFile(fileId);
+		
+		return "redirect:/update"+ boardId;
+		
 	}
 
 }
