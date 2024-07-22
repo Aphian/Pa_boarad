@@ -35,12 +35,17 @@ public class BoardDto {
 		
 	}
 	
-	@Builder
-	public BoardDto(Long id, String title, String content) {
-		this.id = id;
-		this.title = title;
-		this.content = content;
-	}
+    public BoardDto(String title, String content){
+        this.title = title;
+        this.content = content;
+    }
+	
+//	@Builder
+//	public BoardDto(Long id, String title, String content) {
+//		this.id = id;
+//		this.title = title;
+//		this.content = content;
+//	}
 	
 	@QueryProjection
     public BoardDto(Long id, String title, String content, LocalDateTime regDate , LocalDateTime uptDate, Long viewCount, String username){

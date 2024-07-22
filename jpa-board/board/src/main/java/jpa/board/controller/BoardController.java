@@ -37,7 +37,7 @@ public class BoardController {
 		Page<BoardDto> results = customBoardRepository.seleteBoardList(searchVal, pageable);
 		model.addAttribute("list", results);
 		model.addAttribute("maxPage", 5);
-		model.addAttribute("searchVal", searchVal);
+//		model.addAttribute("searchVal", searchVal);
 		
 		pageModelPut(results, model);
 		
@@ -63,16 +63,16 @@ public class BoardController {
 		return "board/write";
 	}
 	
-	@PostMapping("/write")
-	public String save(@Valid BoardDto boardDto, BindingResult result) throws Exception {
-		
-		if (result.hasErrors()) {
-			return "board/write";
-		}
-		
-		boardService.saveBoard(boardDto);
-		return "redirect:/";
-	}
+//	@PostMapping("/write")
+//	public String save(@Valid BoardDto boardDto, BindingResult result) throws Exception {
+//		
+//		if (result.hasErrors()) {
+//			return "board/write";
+//		}
+//		
+//		boardService.saveBoard(boardDto);
+//		return "redirect:/";
+//	}
 	
 	
 	@GetMapping("/updata/{boardId}")
