@@ -3,6 +3,7 @@ package jpa.board.controller;
 
 import jpa.board.dto.BoardDto;
 import jpa.board.entity.Board;
+import jpa.board.repository.BoardRepository;
 import jpa.board.repository.CustomBoardRepository;
 import jpa.board.service.BoardService;
 
@@ -21,6 +22,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
@@ -32,12 +34,14 @@ public class BoardController {
 	private final CustomBoardRepository customBoardRepository;
 	private final BoardService boardService;
 	
+//	private final FileService fileService;
+	
 	@GetMapping("/")
-	public String list(String searchVal, Pageable pageable, Model model) {
+	public String list(@RequestParam(name = "searchVal", required = false) String searchVal, @PageableDefault(size = 10) Pageable pageable, Model model) {
 		Page<BoardDto> results = customBoardRepository.seleteBoardList(searchVal, pageable);
 		model.addAttribute("list", results);
 		model.addAttribute("maxPage", 5);
-//		model.addAttribute("searchVal", searchVal);
+		model.addAttribute("searchVal", searchVal);
 		
 		pageModelPut(results, model);
 		
@@ -52,31 +56,26 @@ public class BoardController {
 	}
 	
 	
-//	@GetMapping("/")
-//	public String list() {
-//		return "board/list";
-//	}
-	
 	@GetMapping("/write")
 	public String write(Model model) {
 		model.addAttribute("boardDto", new BoardDto());
 		return "board/write";
 	}
 	
-//	@PostMapping("/write")
-//	public String save(@Valid BoardDto boardDto, BindingResult result) throws Exception {
-//		
-//		if (result.hasErrors()) {
-//			return "board/write";
-//		}
-//		
-//		boardService.saveBoard(boardDto);
-//		return "redirect:/";
-//	}
+	@PostMapping("/write")
+	public String save(@Valid BoardDto boardDto, BindingResult result) throws Exception {
+		
+		if (result.hasErrors()) {
+			return "board/write";
+		}
+		
+		boardService.saveBoard(boardDto);
+		return "redirect:/";
+	}
 	
 	
 	@GetMapping("/updata/{boardId}")
-	public String detail(@PathVariable Long boardId, Model model) {
+	public String detail(@PathVariable(value = "boardId", required = false) Long boardId, Model model) {
 		Board board = boardService.selectBoardDetail(boardId);
 		BoardDto boardDto = new BoardDto();
 		boardDto.setId(boardId);
@@ -99,7 +98,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("/delete")
-	public String delete(@RequestParam List<String> boardIds) {
+	public String delete(@RequestParam(value = "boarIds", required = false) List<String> boardIds) {
 		
 		for (int i = 0; i < boardIds.size(); i++) {
 			Long id = Long.valueOf(boardIds.get(i));

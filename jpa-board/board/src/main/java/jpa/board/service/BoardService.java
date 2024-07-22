@@ -20,7 +20,7 @@ public class BoardService {
 	private final BoardRepository boardRepository;
 	private final Member2Repository member2Repository;
 	
-	private final FileService fileService;
+//	private final FileService fileService;
 	
 	public Board selectBoardDetail(Long id) {
 		Board board = boardRepository.findById(id).get();
@@ -43,7 +43,7 @@ public class BoardService {
 			board.update(boardDto.getTitle(), boardDto.getContent());
 		}
 		
-		fileService.saveFile(boardDto);
+//		fileService.saveFile(boardDto);
 		
 		return board.getId();
 		
