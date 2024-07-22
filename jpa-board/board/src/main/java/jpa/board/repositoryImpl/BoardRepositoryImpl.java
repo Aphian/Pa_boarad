@@ -4,10 +4,12 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import jpa.board.dto.BoardDto;
+import jpa.board.dto.BoardFileDto;
 import jpa.board.dto.QBoardDto;
-//import jpa.board.dto.QBoardFileDto;
-//import jpa.board.entity.BoardFile;
-
+import jpa.board.entity.BoardFile;
+import jpa.board.dto.QBoardFileDto;
+import jpa.board.entity.BoardFile;
+import jpa.board.entity.QBoardFile;
 import jpa.board.repository.CustomBoardRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -18,7 +20,7 @@ import java.util.List;
 //import java.util.stream.Collectors;
 
 import static jpa.board.entity.QBoard.board;
-//import static jpa.board.entity.QBoardFile.boardFile;
+import static jpa.board.entity.QBoardFile.boardFile;
 import static jpa.board.entity.QMember2.member2;
 
 @Repository
@@ -37,6 +39,25 @@ public class BoardRepositoryImpl implements CustomBoardRepository{
 		Long count = getCount(searchVal);
 		return new PageImpl<>(content, pageable, count);
 		
+	}
+	
+	@Override
+	public List<BoardFileDto> selectBoardFileDetail(Long boardId) {
+		List<BoardFileDto> content = jpaQueryFactory
+				.select(new QBoardFileDto(
+						boardFile.id,
+						boardFile.file.id,
+						boardFile.file.originFIleName,
+						boardFile.file.size,
+						boardFile.file.extenstion
+				))
+				.from(boardFile)
+				.leftJoin(boardFile.file)
+				.where(boardFile.boardId.eq(boardId))
+				.where(boardFile.delYn.eq("N"))
+				.fetch();
+		
+		return content;
 	}
 	
     private Long getCount(String searchVal){
