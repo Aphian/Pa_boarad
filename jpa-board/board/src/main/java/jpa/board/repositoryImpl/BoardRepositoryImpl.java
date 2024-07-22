@@ -5,6 +5,9 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import jpa.board.dto.BoardDto;
 import jpa.board.dto.QBoardDto;
+//import jpa.board.dto.QBoardFileDto;
+//import jpa.board.entity.BoardFile;
+
 import jpa.board.repository.CustomBoardRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -12,14 +15,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+//import java.util.stream.Collectors;
+
 import static jpa.board.entity.QBoard.board;
+//import static jpa.board.entity.QBoardFile.boardFile;
 import static jpa.board.entity.QMember2.member2;
 
 @Repository
 public class BoardRepositoryImpl implements CustomBoardRepository{
 	
 	private final JPAQueryFactory jpaQueryFactory;
-	
+
 	public BoardRepositoryImpl(JPAQueryFactory jpaQueryFactory) {
 		this.jpaQueryFactory = jpaQueryFactory;
 	}
@@ -54,7 +60,7 @@ public class BoardRepositoryImpl implements CustomBoardRepository{
                         ,board.viewCount
                         ,member2.username))
                 .from(board)
-                .leftJoin(board.member, member2)
+                .leftJoin(board.member2, member2)
                 .orderBy(board.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
