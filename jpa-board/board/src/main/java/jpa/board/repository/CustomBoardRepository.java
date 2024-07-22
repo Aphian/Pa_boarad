@@ -13,6 +13,6 @@ public interface CustomBoardRepository {
 	
 	Page<BoardDto> seleteBoardList(String searchVal, Pageable pageable);
 	
-//	List<BoardFileDto> seletBoardFileDetail(Long boardId);
+	List<BoardFileDto> seletBoardFileDetail(Long boardId);
 	
 }

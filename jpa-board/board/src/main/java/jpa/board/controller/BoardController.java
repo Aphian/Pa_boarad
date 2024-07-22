@@ -77,10 +77,14 @@ public class BoardController {
 	@GetMapping("/updata/{boardId}")
 	public String detail(@PathVariable(name = "boardId", required = false) Long boardId, Model model) {
 		Board board = boardService.selectBoardDetail(boardId);
-		BoardDto boardDto = new BoardDto();
-		boardDto.setId(boardId);
-		boardDto.setTitle(board.getTitle());
-		boardDto.setContent(boardDto.getContent());
+		
+		BoardDto boardDto = BoardDto.builder()
+							.id(boardId)
+							.title(board.getTitle())
+							.content(board.getContent())
+							.build();
+
+		model.addAttribute("boardDto", customBoardRepository.seletBoardFileDetail(boardId));
 		model.addAttribute("boardDto",boardDto);
 		
 		return "board/update";
