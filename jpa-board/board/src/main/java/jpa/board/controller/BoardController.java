@@ -75,7 +75,7 @@ public class BoardController {
 	
 	
 	@GetMapping("/updata/{boardId}")
-	public String detail(@PathVariable(name = "boardId", required = false) Long boardId, Model model) {
+	public String detail(@PathVariable(name = "boardId") Long boardId, Model model) {
 		Board board = boardService.selectBoardDetail(boardId);
 		
 		BoardDto boardDto = BoardDto.builder()
