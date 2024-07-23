@@ -22,7 +22,7 @@ public class File {
 	private Long id;
 	
 	@Column(nullable = false)
-	private String originFIleName;
+	private String originFileName;
 	
 	@Column(nullable = false)
 	private String savedFileName;
@@ -44,7 +44,7 @@ public class File {
 	@Builder
 	public File(Long id, String originFileName, String savedFileName, String uploadDir, String extenstion, Long size, String contentType) {
 		this.id = id;
-		this.originFIleName = originFileName;
+		this.originFileName = originFileName;
 		this.savedFileName = savedFileName;
 		this.uploadDir = uploadDir;
 		this.extenstion = extenstion;
