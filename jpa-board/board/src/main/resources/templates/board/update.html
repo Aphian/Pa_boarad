@@ -1,4 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/default_layout}">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/basic}">
 	<head layout:fragment="css">
 		<style>
 		     .fieldError {
@@ -32,7 +32,21 @@
   						<textarea class="form-control" rows="5" id="content" name="content" th:text="*{content}" placeholder="내용을 입력해 주세요"></textarea>
     				</div>
 			        <br>
+			        <div class="mb-3">
+                    	<label for="content">첨부파일</label>
+	                    <p th:each="boardFile, index : ${boardFile}">
+	                        <a th:href="@{/fileDownload/{boardId}(boardId=${boardFile.fileId})}" th:text="${boardFile.originFileName}">파일이름1.png</a>
+	                        <span>
+	                			<button th:fileId="${boardFile.boardFileId}" th:onclick="boardDelete(this.getAttribute('fileId'))" type="button" class="btn btn-outline-danger">삭제</button>
+	            			</span>
+                    	</p>
+                	</div>
 			        <br>
+                	<div class="mb-3">
+                    	<label for="formFileMultiple" class="form-label">파일업로드</label>
+                    	<input class="form-control" type="file" id="formFileMultiple" name="multipartFile" multiple>
+                	</div>
+                	<br>
     				<div>
       					<button type="submit" class="btn btn-sm btn-primary" id="btnSave">수정</button>
       					<button onclick="location.href='/'" type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
@@ -44,4 +58,33 @@
 </html>
 
 <script>
+	// 글삭제
+	function boardDelete(fileId) {
+		if (confirm("삭제하시겠습니까>")) {
+			// 배열 생성
+			const form = decument.createElement('form');
+			form.setAttribute('method', 'post');
+			form.setAttribute('action', '/boardFileDelete');
+			
+			// 파일 id
+			var input1 = document.createElement('input');
+			input1.setAttribute("type", "hidden");
+			input1.setAttribute("name", "fileId");
+            input1.setAttribute("value", fileId);
+            
+            // 게시판 id
+            const selectedElements = document.querySelector("#boardId")
+            var input2 = document.createElement('input');
+            input2.setAttribute("type", "hidden");
+            input2.setAttribute("name", "boardId");
+            input2.setAttribute("value", selectedElements.value);
+
+            form.appendChild(input1);
+            form.appendChild(input2);
+            console.log(form);
+            document.body.appendChild(form);
+            form.submit();
+            
+		}
+	}
 </script>

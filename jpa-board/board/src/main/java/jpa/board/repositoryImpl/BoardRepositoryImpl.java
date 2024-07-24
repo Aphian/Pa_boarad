@@ -47,7 +47,7 @@ public class BoardRepositoryImpl implements CustomBoardRepository{
 				.select(new QBoardFileDto(
 						boardFile.id,
 						boardFile.file.id,
-						boardFile.file.originFIleName,
+						boardFile.file.originFileName,
 						boardFile.file.size,
 						boardFile.file.extenstion
 				))
