@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="layout/default_layout">
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/default_layout">
     <div layout:fragment="content" class="content">
         <form th:action th:object="${form}" method="get">
             <nav class="container">
@@ -33,7 +32,6 @@
                             <th>조회수</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <tr th:each="list, index : ${list}">
                             <td>
