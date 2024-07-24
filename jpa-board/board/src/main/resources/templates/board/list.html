@@ -33,6 +33,9 @@
                         </tr>
                     </thead>
                     <tbody>
+		                <tr th:if="${totalCount == 0}">
+							<td colspan="6" style="text-align:center">조회된 리스트가 없습니다.</td>
+						</tr>
                         <tr th:each="list, index : ${list}">
                             <td>
                                 <label class="checkbox-inline">
@@ -47,7 +50,6 @@
                     </tbody>
                 </table>
                 <br>
-
                 <div class="d-flex justify-content-end">
                     <a href='javascript:boardDelete();' class="btn btn-danger">글삭제</a>
                     <a href="/write" class="btn btn-primary">글쓰기</a>
@@ -57,29 +59,24 @@
                      th:with="start=${(list.number/maxPage)*maxPage + 1},
                       end=(${(list.totalPages == 0) ? 1 : (start + (maxPage - 1) < list.totalPages ? start + (maxPage - 1) : list.totalPages)})">
                     <ul class="pagination">
-
                         <li th:if="${start > 1}" class="page-item">
                             <a th:href="@{/?(page=0, searchVal=${searchVal})}" class="page-link" href="#" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;&laquo;</span>
                             </a>
                         </li>
-
                         <li th:if="${start > 1}" class="page-item">
                             <a th:href="@{/?(page=${start - maxPage-1}, searchVal=${searchVal})}" class="page-link" href="#" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
-
                         <li th:each="page: ${#numbers.sequence(start, end)}" class="page-item" th:classappend="${list.number+1 == page} ? active">
                             <a th:href="@{/?(page=${page-1}, searchVal=${searchVal})}" th:text="${page}" class="page-link" href="#">1</a>
                         </li>
-
                         <li th:if="${end < list.totalPages}" class="page-item">
                             <a th:href="@{/?(page=${start + maxPage -1}, searchVal=${searchVal})}" class="page-link" href="#" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
-
                         <li th:if="${end < list.totalPages}" class="page-item">
                             <a th:href="@{/?(page=${list.totalPages-1}, searchVal=${searchVal})}" class="page-link" href="#" aria-label="Next">
                                 <span aria-hidden="true">&raquo;&raquo;</span>
@@ -92,7 +89,7 @@
     </div>
 </html>
 
-<!--<script>
+<script>
 	// list checkbox
 	
 	// 전체 체크박스
@@ -103,12 +100,9 @@
         const is_checked = checkbox.checked;
 
         if(is_checked){
-
             chkAllChecked()
         }
-
         else{
-
             chkAllUnChecked()
         }
     }
@@ -184,4 +178,4 @@
         }
     }
 
-</script>-->
+</script>
