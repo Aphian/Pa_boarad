@@ -16,6 +16,11 @@ spring:
       filter:
         enabled: true
         
+  servlet:
+    muoltipart:
+      max-file-size: 10MB
+      max-request-sizd: 10MB
+        
   devtools:
     livereload:
       enabled: true
@@ -24,15 +29,11 @@ spring:
     restart:
       enable: false
 
-  logging:
-    level:
-      org.hibernate.SQL: debug
+logging:
+  level:
+    org.hibernate.SQL: debug
       
-  upload:
-    path: C:\Users\k0106\JavaSpringboot\study\file 
+upload:
+  path: C:\Users\k0106\JavaSpringboot\study\file 
 
   
-  servlet:
-    muoltipart:
-      max-file-size: 10MB
-      max-request-sizd: 10MB
