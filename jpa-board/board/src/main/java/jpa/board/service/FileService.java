@@ -24,8 +24,8 @@ import java.util.*;
 @Slf4j
 public class FileService {
 	
-	@Value("${upload.path}")
-	private String uploadDir;
+    @Value("${upload.path}")
+    private String uploadDir;
 	
 	private final FileRepository fileRepository;
 	
