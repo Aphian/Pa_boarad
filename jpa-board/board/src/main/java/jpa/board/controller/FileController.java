@@ -23,6 +23,8 @@ public class FileController {
 	
 	private final FileRepository fileRepository;
 	
+	@GetMapping(value = {"/fileDownload/{fileIdx}"})
+	@ResponseBody
 	public void downloadFile(HttpServletResponse res, @PathVariable Long fileIdx) throws UnsupportedEncodingException {
 		
         File fileInfo = fileRepository.findById(fileIdx).get();
@@ -42,6 +44,7 @@ public class FileController {
         fileCopy(res, saveFilePath);
 	}
 	
+	// 파일 header 설정
 	private void setFileHeader(HttpServletResponse res, File fileInfo) throws UnsupportedEncodingException {
 		res.setHeader("Content-Disposition", "attachment; filename=\"" +  URLEncoder.encode((String) fileInfo.getOriginFileName(), "UTF-8") + "\";");
 		res.setHeader("Content-Transfer-Encoding", "binary");
@@ -50,6 +53,7 @@ public class FileController {
 		res.setHeader("Expires", "-1;");
 	}
 	
+	// 파일 복사
     private void fileCopy(HttpServletResponse res, Path saveFilePath) {
         FileInputStream fis = null;
 

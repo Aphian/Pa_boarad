@@ -31,7 +31,7 @@ public class FileService {
 	
 	private final BoardFileRepository boardFileRepository;
 	
-	private final Member2Repository member2Respository;
+//	private final Member2Repository member2Respository;
 	
 	@Transactional
 	public Map<String, Object> saveFile(BoardDto boardDto) throws Exception {

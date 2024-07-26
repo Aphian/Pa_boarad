@@ -3,7 +3,7 @@ package jpa.board.controller;
 
 import jpa.board.dto.BoardDto;
 import jpa.board.entity.Board;
-import jpa.board.repository.BoardRepository;
+//import jpa.board.repository.BoardRepository;
 import jpa.board.repository.CustomBoardRepository;
 import jpa.board.service.BoardService;
 import jpa.board.service.FileService;
