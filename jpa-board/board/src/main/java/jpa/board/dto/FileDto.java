@@ -1,22 +1,17 @@
 package jpa.board.dto;
 
-import jpa.board.entity.Board;
 import jpa.board.entity.File;
-import jpa.board.entity.Member2;
-
 import lombok.Builder;
 import lombok.Data;
-
-import jakarta.persistence.Column;
 
 @Data
 public class FileDto {
 	
 	private Long id;
-	private String originFileName;
-	private String savedFileName;
-	private String uploadDir;
-	private String extensions;
+	private String originFileName;	// 원본 파일명
+	private String savedFileName;   // 저장된 파일명
+	private String uploadDir;	    // 저장 경로
+	private String extensions;      // 파일 확장자
 	private Long size;
 	private String contentType;
 	
