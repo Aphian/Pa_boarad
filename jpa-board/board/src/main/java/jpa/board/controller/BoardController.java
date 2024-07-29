@@ -74,8 +74,8 @@ public class BoardController {
 	}
 	
 	
-	@GetMapping("/updata/{boardId}")
-	public String detail(@PathVariable(name = "boardId") Long boardId, Model model) {
+	@GetMapping("/update/{boardId}")
+	public String detail(@PathVariable(name = "boardId", required = false) Long boardId, Model model) {
 		Board board = boardService.selectBoardDetail(boardId);
 		
 		BoardDto boardDto = BoardDto.builder()
@@ -84,8 +84,8 @@ public class BoardController {
 							.content(board.getContent())
 							.build();
 
-		model.addAttribute("boardDto", customBoardRepository.selectBoardFileDetail(boardId));
 		model.addAttribute("boardDto",boardDto);
+		model.addAttribute("boardDto", customBoardRepository.selectBoardFileDetail(boardId));
 		
 		return "board/update";
 	}
