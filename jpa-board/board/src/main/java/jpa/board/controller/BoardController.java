@@ -51,6 +51,7 @@ public class BoardController {
 	}
 	
 	private void pageModelPut(Page<BoardDto> results, Model model) {
+		
 		model.addAttribute("totalCount", results.getTotalElements());
 		model.addAttribute("size", results.getPageable().getPageSize());
 		model.addAttribute("number", results.getPageable().getPageNumber());
@@ -59,6 +60,7 @@ public class BoardController {
 	
 	@GetMapping("/write")
 	public String write(Model model) {
+		
 		model.addAttribute("boardDto", new BoardDto());
 		return "board/write";
 	}
@@ -77,6 +79,7 @@ public class BoardController {
 	
 	@GetMapping("/update/{boardId}")
 	public String detail(@PathVariable(name = "boardId", required = false) Long boardId, Model model) {
+		
 		Board board = boardService.selectBoardDetail(boardId);
 		
 		BoardDto boardDto = BoardDto.builder()
