@@ -13,7 +13,7 @@
 	<div layout:fragment="content" class="content">
 		<form th:action="@{/update/{id}/(id=*{id})}" th:object="${boardDto}" method="post" enctype="multipart/form-data">
     		<input type="hidden" name="_method" value="put"/>
-    		<input type="hidden" name="id" th:value="*{id}" />
+    		<input type="hidden" id="boardId" name="id" th:value="*{id}" />
 			<article>
   				<div class="container" role="main">
     				<div class="form-group">

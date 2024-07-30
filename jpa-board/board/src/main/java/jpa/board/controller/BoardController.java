@@ -106,7 +106,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("/delete")
-	public String delete(@RequestParam(name = "boarIds", required = false) List<String> boardIds) {
+	public String delete(@RequestParam(name = "boardIds", required = false) List<String> boardIds) {
 		
 		for (int i = 0; i < boardIds.size(); i++) {
 			Long id = Long.valueOf(boardIds.get(i));

@@ -1,6 +1,7 @@
 package jpa.board.service;
 
 import jpa.board.dto.BoardDto;
+import jpa.board.dto.BoardFileDto;
 import jpa.board.dto.FileDto;
 import jpa.board.entity.BoardFile;
 import jpa.board.repository.BoardFileRepository;
@@ -34,7 +35,7 @@ public class FileService {
 //	private final Member2Repository member2Respository;
 	
 	@Transactional
-	public Map<String, Object> saveFile(BoardDto boardDto) throws Exception {
+	public Map<String, Object> saveFile(BoardDto boardDto, Long boardId) throws Exception {
 		List<MultipartFile> multipartFile = boardDto.getMultipartFile();
 		
 		Map<String, Object> result = new HashMap<String, Object>();
@@ -63,6 +64,7 @@ public class FileService {
                                 .contentType(file1.getContentType())
                                 .build();
                         //파일 insert
+                        jpa.board.entity.File file = fileDto.toEntity();
                         Long fileId = insertFile(fileDto.toEntity());
                         log.info("fileId={}", fileId);
                         
@@ -80,6 +82,13 @@ public class FileService {
                             result.put("result", "FAIL");
                             break;
                         }
+                        
+                        BoardFileDto boardFileDto = BoardFileDto.builder()
+                        		.boardId(boardId)
+                        		.build();
+                        
+                        BoardFile boardFile = boardFileDto.toEntity(file);
+                        insertBoardFile(boardFile);
 					}
 				}
 			}

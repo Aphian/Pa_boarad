@@ -43,7 +43,7 @@ public class BoardService {
 			board.update(boardDto.getTitle(), boardDto.getContent());
 		}
 		
-		fileService.saveFile(boardDto);
+		fileService.saveFile(boardDto, board.getId());
 		
 		return board.getId();
 		
