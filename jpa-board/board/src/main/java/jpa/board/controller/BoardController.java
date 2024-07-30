@@ -89,7 +89,7 @@ public class BoardController {
 							.build();
 
 		model.addAttribute("boardDto",boardDto);
-		model.addAttribute("boardDto", customBoardRepository.selectBoardFileDetail(boardId));
+		model.addAttribute("boardFile", customBoardRepository.selectBoardFileDetail(boardId));
 		
 		return "board/update";
 	}
