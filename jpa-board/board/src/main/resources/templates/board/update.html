@@ -11,7 +11,7 @@
 		</style>
 	</head>
 	<div layout:fragment="content" class="content">
-		<form th:action="@{/update/{id}/(id=*{id})}" th:object="${boardDto}" method="post" enctype="multipart/form-data">
+		<form th:action="@{/update/{id}(id=*{id})}" th:object="${boardDto}" method="post" enctype="multipart/form-data">
     		<input type="hidden" name="_method" value="put"/>
     		<input type="hidden" id="boardId" name="id" th:value="*{id}" />
 			<article>
@@ -37,7 +37,7 @@
 	                    <p th:each="boardFile, index : ${boardFile}">
 	                        <a th:href="@{/fileDownload/{boardId}(boardId=${boardFile.fileId})}" th:text="${boardFile.originFileName}">파일이름1.png</a>
 	                        <span>
-	                			<button th:fileId="${boardFile.boardFileId}" th:onclick="boardDelete(this.getAttribute('fileId'))" type="button" class="btn btn-outline-danger">삭제</button>
+	                			<button th:attr="data-file-id=${file.boardFileId}" th:onclick="boardDelete(this.getAttribute('data-file-id'))" type="button" class="btn btn-outline-danger">삭제</button>
 	            			</span>
                     	</p>
                 	</div>
