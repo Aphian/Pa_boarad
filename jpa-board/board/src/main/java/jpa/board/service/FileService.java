@@ -65,7 +65,7 @@ public class FileService {
                                 .build();
                         //파일 insert
                         jpa.board.entity.File file = fileDto.toEntity();
-                        Long fileId = insertFile(fileDto.toEntity());
+                        Long fileId = insertFile(file);
                         log.info("fileId={}", fileId);
                         
                         try {
