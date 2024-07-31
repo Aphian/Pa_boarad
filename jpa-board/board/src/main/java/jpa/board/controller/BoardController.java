@@ -121,7 +121,7 @@ public class BoardController {
 		
 		fileService.deleteBoardFile(fileId);
 		
-		return "redirect:/update"+ boardId;
+		return "redirect:/update/"+ boardId;
 		
 	}
 

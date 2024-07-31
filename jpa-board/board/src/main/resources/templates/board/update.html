@@ -34,10 +34,10 @@
 			        <br>
 			        <div class="mb-3">
                     	<label for="content">첨부파일</label>
-	                    <p th:each="boardFile, index : ${boardFile}">
+	                    <p th:each="boardFile : ${boardFile}">
 	                        <a th:href="@{/fileDownload/{boardId}(boardId=${boardFile.fileId})}" th:text="${boardFile.originFileName}">파일이름1.png</a>
 	                        <span>
-	                			<button th:attr="data-file-id=${file.boardFileId}" th:onclick="boardDelete(this.getAttribute('data-file-id'))" type="button" class="btn btn-outline-danger">삭제</button>
+	                			<button th:fileId="${boardFile.boardFileId}" th:onclick="boardDelete(this.getAttribute('fileId'))" type="button" class="btn btn-outline-danger">삭제</button>
 	            			</span>
                     	</p>
                 	</div>
@@ -62,7 +62,7 @@
 	function boardDelete(fileId) {
 		if (confirm("삭제하시겠습니까>")) {
 			// 배열 생성
-			const form = decument.createElement('form');
+			const form = document.createElement('form');
 			form.setAttribute('method', 'post');
 			form.setAttribute('action', '/boardFileDelete');
 			
