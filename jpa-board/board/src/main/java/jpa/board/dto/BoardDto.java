@@ -36,13 +36,13 @@ public class BoardDto {
 		
 	}
 	
-    public BoardDto(String title, String content, String delYn){
+    public BoardDto(String title, String content){
         this.title = title;
         this.content = content;
     }
 	
 	@Builder
-	public BoardDto(Long id, String title, String content, String delYn) {
+	public BoardDto(Long id, String title, String content) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
