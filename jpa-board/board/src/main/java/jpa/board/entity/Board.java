@@ -60,7 +60,7 @@ public class Board {
 	}
 	
 	public Board updateViewCount(Long viewCount) {
-		this.viewCount = viewCount + 1;
+		this.viewCount = viewCount+1;
 		return this;
 	}	
 

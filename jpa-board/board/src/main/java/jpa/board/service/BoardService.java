@@ -6,6 +6,7 @@ import jpa.board.entity.Member2;
 import jpa.board.repository.BoardRepository;
 import jpa.board.repository.Member2Repository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BoardService {
 	
 	private final BoardRepository boardRepository;
@@ -38,7 +40,9 @@ public class BoardService {
 		if(boardDto.getId() == null) {
 			board = boardDto.toEntity(member);
 			boardRepository.save(board);
+			
 		} else {
+			
 			board = boardRepository.findById(boardDto.getId()).get();
 			board.update(boardDto.getTitle(), boardDto.getContent());
 		}
