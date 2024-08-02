@@ -27,6 +27,7 @@ public class BoardDto {
 	private LocalDateTime regDate;
 	private LocalDateTime uptDate;
 	private Long viewCount;
+	private String delYn;
 	private String username;
 	
 	private List<MultipartFile> multipartFile;
@@ -35,13 +36,13 @@ public class BoardDto {
 		
 	}
 	
-    public BoardDto(String title, String content){
+    public BoardDto(String title, String content, String delYn){
         this.title = title;
         this.content = content;
     }
 	
 	@Builder
-	public BoardDto(Long id, String title, String content) {
+	public BoardDto(Long id, String title, String content, String delYn) {
 		this.id = id;
 		this.title = title;
 		this.content = content;

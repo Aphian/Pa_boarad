@@ -17,6 +17,7 @@
                         <col width="5%" />
                         <col width="5%" />
                         <col width="5%" />
+                        <col width="5%" />
                     </colgroup>
                     <thead>
                         <tr>
@@ -30,6 +31,7 @@
                             <th>작성자</th>
                             <th>날짜</th>
                             <th>조회수</th>
+                            <th>삭제유무</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,6 +48,7 @@
                             <td th:text="${list.username}"></td>
                             <td th:text="${#temporals.format(list.regDate, 'yyyy-MM-dd')}"></td>
                             <td th:text="${list.viewCount}"></td>
+                            <td th:text="${list.delYn}"></td>
                         </tr>
                     </tbody>
                 </table>
