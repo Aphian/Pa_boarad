@@ -63,18 +63,18 @@ public class BoardRepositoryTest {
 //        assertThat(boards2.getContent()).isEqualTo(content);
 //	}
 	
-	@Test
-	public void posts_save() {
-		
-		Member2 member2 = member2Repository.findByUsername("관리자").orElseThrow(() -> new IllegalArgumentException("User not found"));
-		
-	    for (int i = 1; i <= 200; i++) {
-	    	long j = (long) i;
-	    	BoardDto boardDto = new BoardDto("제목" + i, "내용" + i);
-	    	Board board = boardDto.toEntity(member2);
-	        boardRepository.save(board);
-	    }
-	}
+//	@Test
+//	public void posts_save() {
+//		
+//		Member2 member2 = member2Repository.findByUsername("관리자").orElseThrow(() -> new IllegalArgumentException("User not found"));
+//		
+//	    for (int i = 1; i <= 200; i++) {
+//	    	long j = (long) i;
+//	    	BoardDto boardDto = new BoardDto("제목" + i, "내용" + i);
+//	    	Board board = boardDto.toEntity(member2);
+//	        boardRepository.save(board);
+//	    }
+//	}
 	
 //	@Test
 //	void test() {

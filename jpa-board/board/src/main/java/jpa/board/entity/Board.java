@@ -45,6 +45,11 @@ public class Board {
 		return this;
 	}
 	
+	public Board updateViewCount(Long viewCount) {
+		this.viewCount = viewCount+1;
+		return this;
+	}	
+	
 	public Board delete(String delYn) {
 		this.delYn = delYn;
 		return this;
@@ -59,9 +64,6 @@ public class Board {
 		this.member2 = member2;
 	}
 	
-	public Board updateViewCount(Long viewCount) {
-		this.viewCount = viewCount+1;
-		return this;
-	}	
+
 
 }

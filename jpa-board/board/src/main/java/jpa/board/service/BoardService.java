@@ -24,13 +24,6 @@ public class BoardService {
 	
 	private final FileService fileService;
 	
-	public Board selectBoardDetail(Long id) {
-		Board board = boardRepository.findById(id).get();
-		board.updateViewCount(board.getViewCount());
-		
-		return board;
-	}
-	
 	@Transactional
 	public Long saveBoard(BoardDto boardDto) throws Exception {
 		List<Member2> memberList = member2Repository.findAll();
@@ -61,7 +54,7 @@ public class BoardService {
 	}
 	
 	@Transactional
-	public Board seletBoardDetail(Long id) {
+	public Board selectBoardDetail(Long id) {
 		Board board = boardRepository.findById(id).get();
 		board.updateViewCount(board.getViewCount());
 		return board;
