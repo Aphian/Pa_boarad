@@ -50,7 +50,12 @@ public class BoardService {
 	public Board deleteBoard(Long id) {
 		Board board = boardRepository.findById(id).get();
 		board.delete("Y");
+		boardRepository.deleteById(id);
 		return board;
+	}
+	
+	public void deleteBoardId(Long id) {
+		boardRepository.deleteById(id);
 	}
 	
 	@Transactional
