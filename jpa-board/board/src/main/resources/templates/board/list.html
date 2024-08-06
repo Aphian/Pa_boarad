@@ -161,7 +161,7 @@
             
             if (ids.length == 1) {
 				fetch(`/delete/${ids[0]}`, {
-					method: 'DELTE',
+					method: 'DELETE',
 				}).then(response => {
 					if (response.ok) {
 						alert("삭제 되었습니다.");
