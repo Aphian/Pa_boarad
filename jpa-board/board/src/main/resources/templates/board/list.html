@@ -155,28 +155,57 @@
             return false;
         }
 
-        else{
-            if (confirm("정말로 삭제하시겠습니까?")) {
-                //배열생성
-                const arr = new Array(selectedElementsCnt);
+        if (confirm("정말로 삭제하시겠습니까?")) {
+            //배열생성
+            const ids = Array.from(selectedElements).map(e1 => el.value)
+            
+            if (ids.length == 1) {
+				fetch(`/delete/${ids[0]}`, {
+					method: 'DELTE',
+				}).then(response => {
+					if (response.ok) {
+						alert("삭제 되었습니다.");
+					} else {
+						alert("삭제가 실패했습니다.");
+					}
+					location.reload();
+				});
+				
+			} else {
+				fetch('/delete', {
+					method: 'DELETE',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(ids),
+				}).then(response => {
+					if (response.ok) {
+						alert("삭제 되었습니다.");
+					} else {
+						alert("삭제가 실패했습니다.")
+					}
+					location.reload();
+				});
+			}
 
-                document.querySelectorAll('input[name="chk"]:checked').forEach(function(v, i) {
-                    arr[i] = v.value;
-                });
+            /*  
+			document.querySelectorAll('input[name="chk"]:checked').forEach(function(v, i) {
+                arr[i] = v.value;
+            });
 
-                const form = document.createElement('form');
-                form.setAttribute('method', 'post');        //Post 메소드 적용
-                form.setAttribute('action', '/delete');
+            const form = document.createElement('form');
+            form.setAttribute('method', 'post');        //Post 메소드 적용
+            form.setAttribute('action', '/delete');
 
-                var input1 = document.createElement('input');
-                input1.setAttribute("type", "hidden");
-                input1.setAttribute("name", "boardIds");
-                input1.setAttribute("value", arr);
-                form.appendChild(input1);
-                console.log(form);
-                document.body.appendChild(form);
-                form.submit();
-            }
+            var input1 = document.createElement('input');
+            input1.setAttribute("type", "hidden");
+            input1.setAttribute("name", "boardIds");
+            input1.setAttribute("value", arr);
+            form.appendChild(input1);
+            console.log(form);
+            document.body.appendChild(form);
+            form.submit();
+            */
         }
     }
 

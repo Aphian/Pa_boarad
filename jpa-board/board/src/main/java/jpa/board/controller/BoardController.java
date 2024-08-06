@@ -118,12 +118,12 @@ public class BoardController {
 		return "redirect:/";
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/{id}")
 	public void deleteBoard(@PathVariable(name = "boardId", required = false) Long id) {
 		boardService.deleteBoardId(id);
 	}
 	
-	@DeleteMapping("/delete")
+	@DeleteMapping
 	public void deleteBoards(@RequestBody List<Long> boardIds) {
 		boardService.deleteBoardByIds(boardIds);
 	}
