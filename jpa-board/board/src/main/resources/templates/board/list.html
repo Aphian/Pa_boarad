@@ -41,7 +41,8 @@
                                 <label class="checkbox-inline">
                                     <input type="checkbox" name="chk" class="chk" onclick="chkClicked()" th:value="${list.id}">
                                 </label>
-                            <td th:text="${totalCount - (size * number) - index.index}"></td>
+                            <!-- <td th:text="${totalCount - (size * number) - index.index}"></td> -->
+                            <td th:text="${list.id}"></td>
                             <td><a th:href="@{/update/{boardId}(boardId=${list.id})}" th:text="${list.title}"></a></td>
                             <td th:text="${list.username}"></td>
                             <td th:text="${#temporals.format(list.regDate, 'yyyy-MM-dd')}"></td>
