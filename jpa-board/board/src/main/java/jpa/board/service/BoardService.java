@@ -46,14 +46,14 @@ public class BoardService {
 		
 	}
 	
-	@Transactional
-	public Board deleteBoard(Long id) {
-		Board board = boardRepository.findById(id).get();
-		board.delete("Y");
-		boardRepository.deleteById(id);
-		return board;
-	}
-	
+//	@Transactional
+//	public Board deleteBoard(Long id) {
+//		Board board = boardRepository.findById(id).get();
+//		board.delete("Y");
+//		boardRepository.deleteById(id);
+//		return board;
+//	}
+//	
 	@Transactional
 	public void deleteBoardId(Long id) {
 		boardRepository.deleteById(id);
@@ -62,7 +62,6 @@ public class BoardService {
 	@Transactional
 	public void deleteBoardByIds(List<Long> boardIds) {
 		boardRepository.deleteAllById(boardIds);
-		
 	}
 	
 	@Transactional

@@ -10,6 +10,5 @@ import java.util.List;
 
 public interface BoardRepository extends JpaRepository<Board, Long>{
 	
-	void deleteAllById(List<Long> boardIds);
 
 }
