@@ -39,7 +39,7 @@
                         <tr th:each="list, index : ${list}">
                             <td>
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" name="chk" class="chk"onclick="chkClicked()" th:value="${list.id}">
+                                    <input type="checkbox" name="chk" class="chk" onclick="chkClicked()" th:value="${list.id}">
                                 </label>
                             <td th:text="${totalCount - (size * number) - index.index}"></td>
                             <td><a th:href="@{/update/{boardId}(boardId=${list.id})}" th:text="${list.title}"></a></td>
@@ -155,7 +155,7 @@
 
         if (confirm("정말로 삭제하시겠습니까?")) {
             //배열생성
-            const ids = Array.from(selectedElements).map(e1 => el.value)
+            const ids = Array.from(selectedElements).map(el => el.value);
             
             if (ids.length == 1) {
 				fetch(`/delete/${ids[0]}`, {
