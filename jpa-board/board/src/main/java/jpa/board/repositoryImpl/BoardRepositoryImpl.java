@@ -64,6 +64,7 @@ public class BoardRepositoryImpl implements CustomBoardRepository{
         Long count = jpaQueryFactory
                 .select(board.count())
                 .from(board)
+                .where(containsSearch(searchVal))
                 //.leftJoin(board.member, member)   //검색조건 최적화
                 .fetchOne();
         return count;
@@ -81,6 +82,7 @@ public class BoardRepositoryImpl implements CustomBoardRepository{
                         ,board.viewCount
                         ,member2.username))
                 .from(board)
+                .where(containsSearch(searchVal))
                 .leftJoin(board.member2, member2)
                 .orderBy(board.id.desc())
                 .offset(pageable.getOffset())
@@ -88,13 +90,9 @@ public class BoardRepositoryImpl implements CustomBoardRepository{
                 .fetch();
         return content;
     }
-	
-	private BooleanExpression containsSearch(String searchVal) {
-		
-		return searchVal != null ? board.title.contains(searchVal) : null;
-		
-	}
+    
+    private BooleanExpression containsSearch(String searchVal) {
+    	return searchVal != null ? board.title.contains(searchVal) : null;
+    }
 
-
-	
 }
