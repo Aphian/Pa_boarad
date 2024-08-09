@@ -34,6 +34,6 @@ logging:
     org.hibernate.SQL: debug
       
 upload:
-  path: C:\Users\k0106\JavaSpringboot\study\file 
+  path: C:\Users\k0106\JavaSpringboot\study\file\
 
   
