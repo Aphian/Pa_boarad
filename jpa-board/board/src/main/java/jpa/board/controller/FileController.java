@@ -25,7 +25,7 @@ public class FileController {
 	
 	@GetMapping(value = {"/fileDownload/{fileIdx}"})
 	@ResponseBody
-	public void downloadFile(HttpServletResponse res, @PathVariable Long fileIdx) throws UnsupportedEncodingException {
+	public void downloadFile(HttpServletResponse res, @PathVariable(name = "fileIdx", required = false) Long fileIdx) throws UnsupportedEncodingException {
 		
         File fileInfo = fileRepository.findById(fileIdx).get();
 
