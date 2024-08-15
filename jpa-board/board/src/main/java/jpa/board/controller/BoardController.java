@@ -109,6 +109,7 @@ public class BoardController {
 		return "redirect:/";
 	}
 	
+	// 논리적 삭제
 //	@PostMapping("/delete")
 //	public String delete(@RequestParam(name = "boardIds", required = false) List<String> boardIds) {
 //		
@@ -120,6 +121,7 @@ public class BoardController {
 //		return "redirect:/";
 //	}
 	
+	// DB 테이블 데이터 삭제
 	@DeleteMapping("/delete/{id}")
 	@ResponseBody
 	public void deleteBoard(@PathVariable(name = "id", required = false) Long id) {
