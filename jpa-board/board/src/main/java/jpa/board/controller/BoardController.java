@@ -121,19 +121,21 @@ public class BoardController {
 //		return "redirect:/";
 //	}
 	
-	// DB 테이블 데이터 삭제
+	// DB 테이블 단일 데이터 삭제
 	@DeleteMapping("/delete/{id}")
 	@ResponseBody
 	public void deleteBoard(@PathVariable(name = "id", required = false) Long id) {
 		boardService.deleteBoardId(id);
 	}
 	
+	// DB 테이블 여러 데이터 삭제
 	@DeleteMapping("/delete")
 	@ResponseBody
 	public void deleteBoards(@RequestBody List<Long> boardIds) {
 		boardService.deleteBoardByIds(boardIds);
 	}
 	
+	// 게시글 파일 삭제
 	@PostMapping("/boardFileDelete")
 	public String boardFileDelete(@RequestParam(name = "fileId", required = false) Long fileId, @RequestParam(name = "boardId", required = false) Long boardId) {
 		
