@@ -19,14 +19,22 @@ public class Member2Dto {
 	private int age;
 	private Authority authority;
 	
-	@QueryProjection
-	public Member2DTO(Long id, String username, String phoneNo, int age, Authority autoryity) {
+	@Builder
+	public Member2Dto(Long id, String username, String phoneNo, int age) {
 		this.id = id;
 		this.username = username;
 		this.phoneNo = phoneNo;
 		this.age = age;
-		this.authority = autoryity;
 	}
+	
+//	@QueryProjection
+//	public Member2Dto(Long id, String username, String phoneNo, int age, Authority autoryity) {
+//		this.id = id;
+//		this.username = username;
+//		this.phoneNo = phoneNo;
+//		this.age = age;
+//		this.authority = autoryity;
+//	}
 	
 	public Member2 toEntity() {
 		return Member2.builder()
