@@ -27,14 +27,14 @@ public class Member2Dto {
 		this.age = age;
 	}
 	
-//	@QueryProjection
-//	public Member2Dto(Long id, String username, String phoneNo, int age, Authority autoryity) {
-//		this.id = id;
-//		this.username = username;
-//		this.phoneNo = phoneNo;
-//		this.age = age;
-//		this.authority = autoryity;
-//	}
+	@QueryProjection
+	public Member2Dto(Long id, String username, String phoneNo, int age, Authority autoryity) {
+		this.id = id;
+		this.username = username;
+		this.phoneNo = phoneNo;
+		this.age = age;
+		this.authority = autoryity;
+	}
 	
 	public Member2 toEntity() {
 		return Member2.builder()
