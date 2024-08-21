@@ -14,6 +14,7 @@ import jakarta.validation.constraints.NotEmpty;
 public class Member2Dto {
 	
 	private Long id;
+	@NotEmpty(message = "아이디를 입력해주세요.")
 	private String username;
 	private String phoneNo;
 	private int age;
