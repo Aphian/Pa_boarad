@@ -15,5 +15,13 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Slf4j
 public class Member2Service {
+	
+	private final Member2Repository memberRepository;
+	
+	public Long saveMember(Member2Dto member2Dto) throws Exception {
+		
+		return memberRepository.save(member2Dto.toEntity()).getId();
+		
+	}
 
 }
