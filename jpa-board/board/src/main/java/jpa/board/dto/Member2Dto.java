@@ -14,24 +14,28 @@ import jakarta.validation.constraints.NotEmpty;
 public class Member2Dto {
 	
 	private Long id;
+	
 	@NotEmpty(message = "아이디를 입력해주세요.")
 	private String username;
+	private String password;
 	private String phoneNo;
 	private int age;
 	private Authority authority;
 	
 	@Builder
-	public Member2Dto(Long id, String username, String phoneNo, int age) {
+	public Member2Dto(Long id, String username, String password, String phoneNo, int age) {
 		this.id = id;
 		this.username = username;
+		this.password = password;
 		this.phoneNo = phoneNo;
 		this.age = age;
 	}
 	
 	@QueryProjection
-	public Member2Dto(Long id, String username, String phoneNo, int age, Authority autoryity) {
+	public Member2Dto(Long id, String username, Stirng password, String phoneNo, int age, Authority autoryity) {
 		this.id = id;
 		this.username = username;
+		this.password = password;
 		this.phoneNo = phoneNo;
 		this.age = age;
 		this.authority = autoryity;

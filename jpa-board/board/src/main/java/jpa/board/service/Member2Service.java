@@ -7,6 +7,7 @@ import jpa.board.repository.Member2Repository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,10 +18,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class Member2Service {
 	
 	private final Member2Repository memberRepository;
+	private final PasswordEncoder passwordEncoder;
 	
-	public Long saveMember(Member2Dto member2Dto) throws Exception {
+	// 회원가입
+	public Member2 saveMember(Member2Dto member2Dto) throws Exception {
 		
-		return memberRepository.save(member2Dto.toEntity()).getId();
+		member2Dto.setPassword(passwordEncoder.encode(member2Dto.getPassword()));
+		
+		Member2 member2 = member2Dto.toEntity();
+		
+		return memberRepository.save(member2);
 		
 	}
 
