@@ -32,7 +32,7 @@ public class Member2Dto {
 	}
 	
 	@QueryProjection
-	public Member2Dto(Long id, String username, Stirng password, String phoneNo, int age, Authority autoryity) {
+	public Member2Dto(Long id, String username, String password, String phoneNo, int age, Authority autoryity) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
