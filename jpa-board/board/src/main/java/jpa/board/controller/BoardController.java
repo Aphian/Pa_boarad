@@ -40,7 +40,7 @@ public class BoardController {
 	
 	private final FileService fileService;
 	
-	@GetMapping("/list")
+	@GetMapping("/")
 	public String list(@RequestParam(name = "searchVal", required = false) String searchVal, @PageableDefault(size = 10) Pageable pageable, Model model) {
 		
 		Page<BoardDto> results = customBoardRepository.seleteBoardList(searchVal, pageable);

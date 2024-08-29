@@ -16,7 +16,7 @@ public class Member2Controller {
 	
 	private final Member2Service member2Service;
 	
-	@GetMapping("/")
+	@GetMapping("/login")
 	public String login() {
 		
 		
