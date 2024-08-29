@@ -43,7 +43,7 @@ public class Member2Controller {
 			return "regsiter";
 		}
 		
-		return "redirect:/register/success";
+		return "register";
 		
 	}
 	
