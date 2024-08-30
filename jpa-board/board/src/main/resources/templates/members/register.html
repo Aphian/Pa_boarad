@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/basic">
+    <div layout:fragment="content" class="content">
+		<form th:action="@{/login}" method="post">
+        <div>
+            <label>Username: </label>
+            <input type="text" name="username" />
+        </div>
+        <div>
+            <label>Password: </label>
+            <input type="password" name="password" />
+        </div>
+        <div>
+            <button type="submit">Login</button>
+        </div>
+    </form>
+    <p th:if="${param.error}" style="color: red;">Invalid username or password</p>
+    <p th:if="${param.logout}" style="color: green;">You have been logged out</p>
+	</div>
+</html>
+<script>
+	
+</script>
