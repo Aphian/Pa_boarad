@@ -47,6 +47,11 @@ public class Member2Controller {
 		
 	}
 	
+	public String test() {
+		
+		return "test";
+	}
+	
 	
 	@GetMapping("/login")
 	public String login() {
