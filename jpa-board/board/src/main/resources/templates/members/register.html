@@ -30,12 +30,13 @@
 	</div>
 </html>
 <script >
+	
 	window.onload = function() {
 		// 서버에서 successMessage가 전달되면 alert 창을 띄우고, 리다이렉트 처리
 		var successMessage = /*[[${successMessage}]]*/ '';
         if (successMessage) {
             alert(successMessage);
-            window.location.href = "/";  // 홈으로 리다이렉트 (필요한 경로로 수정 가능)
+            window.location.href = "/";  // 홈으로 리다이렉트
         }
         // 서버에서 errorMessage가 전달되면 alert 창을 띄움
         var errorMessage = /*[[${errorMessage}]]*/ '';
@@ -43,4 +44,5 @@
             alert(errorMessage);
         }
     }
+    
 </script>
