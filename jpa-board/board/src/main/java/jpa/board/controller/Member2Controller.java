@@ -47,6 +47,8 @@ public class Member2Controller {
 		
 	}
 	
+	
+	
 	// 로그인
 	@GetMapping("/login")
 	public String login() {
