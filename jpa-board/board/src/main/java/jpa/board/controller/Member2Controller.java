@@ -47,12 +47,6 @@ public class Member2Controller {
 		
 	}
 	
-	// Test
-	public String Test() {
-		return "join";
-	}
-	
-	
 	// 로그인
 	@GetMapping("/login")
 	public String login() {
