@@ -49,9 +49,6 @@ public class Member2Controller {
 	
 	// Test
 	public String Test() {
-		
-		
-		
 		return "join";
 	}
 	
