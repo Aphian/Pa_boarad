@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Member2Controller {
 	
-	private final Member2Service member2Service;
+	private final Member2Service memberService;
 	
 	// 회원가입 빈 Form
 	@GetMapping("/join")
@@ -37,7 +37,7 @@ public class Member2Controller {
 		}
 		
 		try {
-			member2Service.saveMember(member2Dto);
+			memberService.saveMember(member2Dto);
 		} catch (Exception e) {
 			model.addAttribute("Error", "회원가입 오류");
 			return "join";
