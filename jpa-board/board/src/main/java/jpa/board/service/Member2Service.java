@@ -30,5 +30,13 @@ public class Member2Service {
 		return memberRepository.save(member2);
 		
 	}
+	
+	// 회원정보 수정
+	public Member2 updateMember(Member2Dto member2Dto) throws Exception {
+		
+		Member2 member2 = member2Dto.toEntity();
+		
+		return memberRepository.save(member2);
+	}
 
 }
