@@ -38,5 +38,10 @@ public class Member2Service {
 		
 		return memberRepository.save(member2);
 	}
+	
+	// Test
+	public String Test() {
+		return "test";
+	}
 
 }
